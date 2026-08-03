@@ -526,19 +526,170 @@
             border-bottom: 1px solid var(--line);
         }
 
-        .iframe-container {
-            max-width: 640px;
-            margin: 0 auto;
-            box-shadow: 0 4px 20px rgba(40,32,26,0.06);
-            background: #ffffff;
-            border-radius: 4px;
-            overflow: hidden;
+        /* --- FORMULARI RSVP --- */
+        .rsvp-form {
+            max-width: 520px;
+            margin: 50px auto 0;
+            text-align: left;
         }
 
-        iframe {
+        .rsvp-form .field {
+            margin-bottom: 28px;
+        }
+
+        .rsvp-form label {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: 1.1rem;
+            color: var(--ink);
+            margin-bottom: 10px;
+        }
+
+        .rsvp-form .hint {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-style: normal;
+            font-size: 0.78rem;
+            color: var(--ink-soft);
+            margin-top: 4px;
+            font-weight: 300;
+        }
+
+        .rsvp-form input[type="text"],
+        .rsvp-form textarea {
+            width: 100%;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            color: var(--ink);
+            background: #ffffff;
+            border: 1px solid var(--line);
+            border-radius: 3px;
+            padding: 12px 14px;
+            outline: none;
+            transition: border-color 0.25s ease;
+        }
+
+        .rsvp-form textarea {
+            resize: vertical;
+            min-height: 80px;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.5;
+        }
+
+        .rsvp-form input[type="text"]:focus,
+        .rsvp-form textarea:focus {
+            border-color: var(--ink);
+        }
+
+        .rsvp-form .radio-group {
+            display: flex;
+            gap: 14px;
+        }
+
+        .rsvp-form .radio-option {
+            flex: 1;
+        }
+
+        .rsvp-form .radio-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .rsvp-form .radio-option label {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 0.85rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--ink-soft);
+            background: #ffffff;
+            border: 1px solid var(--line);
+            border-radius: 3px;
+            padding: 12px 10px;
+            margin: 0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .rsvp-form .radio-option input[type="radio"]:checked + label {
+            background: var(--ink);
+            border-color: var(--ink);
+            color: var(--cream);
+        }
+
+        .rsvp-form .radio-option label:hover {
+            border-color: var(--ink);
+        }
+
+        .rsvp-form .conditional {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+        }
+
+        .rsvp-form .conditional.open {
+            max-height: 260px;
+        }
+
+        .rsvp-form .conditional .field {
+            padding-top: 4px;
+        }
+
+        .rsvp-form button[type="submit"] {
             display: block;
             width: 100%;
+            background: var(--ink);
+            color: var(--cream);
             border: none;
+            border-radius: 3px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 16px;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+            margin-top: 8px;
+        }
+
+        .rsvp-form button[type="submit"]:hover {
+            opacity: 0.85;
+        }
+
+        .rsvp-form .form-note {
+            font-size: 0.78rem;
+            color: var(--ink-soft);
+            text-align: center;
+            margin-top: 16px;
+        }
+
+        .rsvp-success {
+            max-width: 520px;
+            margin: 50px auto 0;
+            text-align: center;
+            display: none;
+        }
+
+        .rsvp-success.visible {
+            display: block;
+        }
+
+        .rsvp-success .check {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.8rem;
+            color: var(--ink);
+            margin-bottom: 10px;
+        }
+
+        .rsvp-success p {
+            margin-bottom: 0;
         }
 
         /* --- PEU DE PÀGINA --- */
@@ -1029,11 +1180,70 @@
         <h2 data-i18n="rsvp_titol">Confirmació d'assistència</h2>
         <p data-i18n="rsvp_text">Si us plau, confirma la teva assistència abans de l'1 de Juny.</p>
 
-        <div class="iframe-container">
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfD_Gg_YourFormIDHere/viewform?embedded=true"
-                    height="800">
-                <span data-i18n="rsvp_loading">Carregant formulari...</span>
-            </iframe>
+        <form class="rsvp-form" id="rsvp-form" name="rsvp" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="rsvp">
+            <p style="display:none;">
+                <label>No omplir: <input name="bot-field"></label>
+            </p>
+
+            <div class="field">
+                <label for="f-nombre" data-i18n="rsvp_f_nombre">Nom complet</label>
+                <input type="text" id="f-nombre" name="Nombre completo" required>
+            </div>
+
+            <div class="field">
+                <label data-i18n="rsvp_f_asistencia">Hi assistiràs?</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="f-asis-si" name="Asistencia" value="Sí" required>
+                        <label for="f-asis-si" data-i18n="rsvp_si">Sí</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="f-asis-no" name="Asistencia" value="No">
+                        <label for="f-asis-no" data-i18n="rsvp_no">No</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <label data-i18n="rsvp_f_acomp">Vindràs amb acompanyant i/o fills/es?</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="f-acomp-si" name="Acompañantes" value="Sí" onchange="toggleAcompanantes(true)">
+                        <label for="f-acomp-si" data-i18n="rsvp_si">Sí</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="f-acomp-no" name="Acompañantes" value="No" onchange="toggleAcompanantes(false)">
+                        <label for="f-acomp-no" data-i18n="rsvp_no">No</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="conditional" id="acomp-detail">
+                <div class="field">
+                    <label for="f-acomp-nombres" data-i18n="rsvp_f_acomp_nombres">Noms dels acompanyants</label>
+                    <span class="hint" data-i18n="rsvp_f_acomp_hint">Indica'ns també l'edat si són menors</span>
+                    <textarea id="f-acomp-nombres" name="Nombres acompañantes y edades"></textarea>
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="f-alergias" data-i18n="rsvp_f_alergias">Al·lèrgies, intoleràncies o restriccions alimentàries</label>
+                <textarea id="f-alergias" name="Alergias"></textarea>
+            </div>
+
+            <div class="field">
+                <label for="f-cancion" data-i18n="rsvp_f_cancion">Una cançó que no pot faltar a la festa</label>
+                <input type="text" id="f-cancion" name="Canción">
+            </div>
+
+            <button type="submit" data-i18n="rsvp_enviar">Enviar</button>
+            <p class="form-note" data-i18n="rsvp_note">Podràs tornar a enviar el formulari si necessites corregir alguna dada.</p>
+        </form>
+
+        <div class="rsvp-success" id="rsvp-success">
+            <p class="check">✓</p>
+            <p data-i18n="rsvp_success">Gràcies! Hem rebut la teva confirmació.</p>
         </div>
     </section>
 
@@ -1240,6 +1450,45 @@
             });
         }
 
+        // --- Formulari RSVP: mostra el camp d'acompanyants només si cal ---
+        function toggleAcompanantes(show) {
+            const box = document.getElementById('acomp-detail');
+            const textarea = document.getElementById('f-acomp-nombres');
+            if (show) {
+                box.classList.add('open');
+                textarea.setAttribute('required', 'required');
+            } else {
+                box.classList.remove('open');
+                textarea.removeAttribute('required');
+                textarea.value = '';
+            }
+        }
+
+        // --- Formulari RSVP: enviament via AJAX perquè Netlify el processi sense recarregar la pàgina ---
+        (function () {
+            const form = document.getElementById('rsvp-form');
+            if (!form) return;
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const data = new FormData(form);
+
+                fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(data).toString()
+                })
+                    .then(() => {
+                        form.style.display = 'none';
+                        document.getElementById('rsvp-success').classList.add('visible');
+                    })
+                    .catch(() => {
+                        alert('Hi ha hagut un problema enviant el formulari. Torna-ho a provar o escriu-nos directament.');
+                    });
+            });
+        })();
+
         // --- Acordeó d'informació pràctica (es poden obrir diverses respostes alhora) ---
         function toggleFaq(btn) {
             const item = btn.parentElement;
@@ -1295,6 +1544,18 @@
                 rsvp_titol: "Confirmació d'assistència",
                 rsvp_text: "Si us phau, confirma la teva assistència abans de l'1 de Juny.",
                 rsvp_loading: "Carregant formulari...",
+                rsvp_f_nombre: "Nom complet",
+                rsvp_f_asistencia: "Hi assistiràs?",
+                rsvp_si: "Sí",
+                rsvp_no: "No",
+                rsvp_f_acomp: "Vindràs amb acompanyant i/o fills/es?",
+                rsvp_f_acomp_nombres: "Noms dels acompanyants",
+                rsvp_f_acomp_hint: "Indica'ns també l'edat si són menors",
+                rsvp_f_alergias: "Al·lèrgies, intoleràncies o restriccions alimentàries",
+                rsvp_f_cancion: "Una cançó que no pot faltar a la festa",
+                rsvp_enviar: "Enviar",
+                rsvp_note: "Podràs tornar a enviar el formulari si necessites corregir alguna dada.",
+                rsvp_success: "Gràcies! Hem rebut la teva confirmació.",
                 footer_text: "Creat amb ♥",
                 ubic_titol: "Ubicacions",
                 ubic_text: "Aquí trobaràs les dues ubicacions del gran dia: la cerimònia i el banquet.",
@@ -1366,6 +1627,18 @@
                 rsvp_titol: "Confirmación de asistencia",
                 rsvp_text: "Por favor, confirma tu asistencia antes del 1 de Junio.",
                 rsvp_loading: "Cargando formulario...",
+                rsvp_f_nombre: "Nombre completo",
+                rsvp_f_asistencia: "¿Asistirás?",
+                rsvp_si: "Sí",
+                rsvp_no: "No",
+                rsvp_f_acomp: "¿Vendrás con acompañante y/o hijos/as?",
+                rsvp_f_acomp_nombres: "Nombres de los acompañantes",
+                rsvp_f_acomp_hint: "Indícanos también la edad si son menores",
+                rsvp_f_alergias: "Alergias, intolerancias o restricciones alimentarias",
+                rsvp_f_cancion: "Una canción que no puede faltar en la fiesta",
+                rsvp_enviar: "Enviar",
+                rsvp_note: "Podrás volver a enviar el formulario si necesitas corregir algún dato.",
+                rsvp_success: "¡Gracias! Hemos recibido tu confirmación.",
                 footer_text: "Creado con ♥",
                 ubic_titol: "Ubicaciones",
                 ubic_text: "Aquí encontrarás las dos ubicaciones del gran día: la ceremonia y el banquete.",
