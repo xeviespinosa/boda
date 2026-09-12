@@ -191,6 +191,12 @@
             text-align: center;
             padding: 40px 20px;
             border-bottom: 1px solid var(--line);
+            position: relative;
+            background-image:
+                linear-gradient(rgba(250, 248, 243, 0.72), rgba(250, 248, 243, 0.86) 60%, var(--cream) 100%),
+                url('fotos/hero.jpg');
+            background-size: cover;
+            background-position: center 30%;
         }
 
         .hero .names {
@@ -314,6 +320,29 @@
             margin: 0 auto;
             border: 0;
             border-top: 1px solid var(--line);
+        }
+
+        .detalls-foto {
+            max-width: 420px;
+            margin: 8px auto 40px;
+            padding: 10px;
+            background: #ffffff;
+            box-shadow: 0 4px 24px rgba(40,32,26,0.08);
+        }
+
+        .detalls-foto img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        /* --- FRANJA DECORATIVA (FOTO A SANGRE) --- */
+        .foto-separador {
+            width: 100%;
+            height: 320px;
+            background-size: cover;
+            background-position: center;
+            border-bottom: 1px solid var(--line);
         }
 
         .detall-titol {
@@ -871,6 +900,7 @@
             .hero .data { font-size: 1.3rem; letter-spacing: 2px; }
             h2 { font-size: 2rem; }
             .container, .rsvp-section { padding: 70px 20px; }
+            .foto-separador { height: 220px; }
             /* "top" es manté igual en tots dos estats (pinned i no pinned) perquè el
                desplaçament en fixar-se sigui estrictament horitzontal. El "font-size"
                tampoc canvia, per mantenir la mateixa mida de lletra abans i després. */
@@ -1077,6 +1107,9 @@
     <section id="detalls" class="container">
         <h2 data-i18n="detalls_titol">Ens casem!</h2>
         <p data-i18n="detalls_text">Fa molt de temps que caminem junts, pero ara ha arribat el moment de fer el gran pas. Ens faria una il·lusió immensa que ens acompanyéssiu en aquest dia tan especial per a nosaltres.</p>
+        <div class="detalls-foto">
+            <img src="fotos/nosotros.jpg" alt="Belén i Xevi" loading="lazy">
+        </div>
         <hr>
     </section>
 
@@ -1113,6 +1146,8 @@
             </div>
         </div>
     </section>
+
+    <div class="foto-separador" style="background-image: url('fotos/separador_1.jpg');" role="img" aria-label="Belén i Xevi"></div>
 
     <section id="faq" class="faq-section">
         <h2 data-i18n="faq_titol">Informació pràctica</h2>
@@ -1175,6 +1210,8 @@
             </div>
         </div>
     </section>
+
+    <div class="foto-separador" style="background-image: url('fotos/separador_2.jpg');" role="img" aria-label="Belén i Xevi"></div>
 
     <section id="rsvp" class="rsvp-section">
         <h2 data-i18n="rsvp_titol">Confirmació d'assistència</h2>
