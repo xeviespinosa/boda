@@ -336,27 +336,13 @@
             height: auto;
         }
 
-        /* --- FOTOS DECORATIVAS ENTRE SECCIONES --- */
+        /* --- FRANJA DECORATIVA (FOTO A SANGRE) --- */
         .foto-separador {
             width: 100%;
-            padding: 34px 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: var(--cream);
+            height: 320px;
+            background-size: cover;
+            background-position: center;
             border-bottom: 1px solid var(--line);
-        }
-
-        .foto-separador img {
-            display: block;
-            width: auto;
-            height: 280px;
-            max-width: 180px;
-            object-fit: contain;
-            padding: 8px;
-            background: #ffffff;
-            border: 1px solid var(--line);
-            box-shadow: 0 6px 24px rgba(40,32,26,0.10);
         }
 
         .detall-titol {
@@ -914,8 +900,7 @@
             .hero .data { font-size: 1.3rem; letter-spacing: 2px; }
             h2 { font-size: 2rem; }
             .container, .rsvp-section { padding: 70px 20px; }
-            .foto-separador { padding: 28px 20px; }
-            .foto-separador img { height: 230px; max-width: 150px; padding: 6px; }
+            .foto-separador { height: 220px; }
             /* "top" es manté igual en tots dos estats (pinned i no pinned) perquè el
                desplaçament en fixar-se sigui estrictament horitzontal. El "font-size"
                tampoc canvia, per mantenir la mateixa mida de lletra abans i després. */
@@ -1162,10 +1147,7 @@
         </div>
     </section>
 
-
-    <div class="foto-separador">
-        <img src="fotos/separador_1.jpg" alt="Belén i Xevi" loading="lazy">
-    </div>
+    <div class="foto-separador" style="background-image: url('fotos/separador_1.jpg');" role="img" aria-label="Belén i Xevi"></div>
 
     <section id="faq" class="faq-section">
         <h2 data-i18n="faq_titol">Informació pràctica</h2>
@@ -1229,9 +1211,7 @@
         </div>
     </section>
 
-    <div class="foto-separador">
-        <img src="fotos/separador_2.jpg" alt="Belén i Xevi" loading="lazy">
-    </div>
+    <div class="foto-separador" style="background-image: url('fotos/separador_2.jpg');" role="img" aria-label="Belén i Xevi"></div>
 
     <section id="rsvp" class="rsvp-section">
         <h2 data-i18n="rsvp_titol">Confirmació d'assistència</h2>
