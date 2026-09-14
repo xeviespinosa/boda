@@ -56,7 +56,7 @@
             background: none;
             border: none;
             cursor: pointer;
-            color: rgba(255,255,255,0.82);
+            color: var(--ink-soft);
             font-family: inherit;
             font-size: inherit;
             letter-spacing: inherit;
@@ -67,34 +67,16 @@
         }
 
         .lang-switch button.active {
-            color: #ffffff;
+            color: var(--ink);
             font-weight: 500;
-            border-bottom: 1px solid #ffffff;
+            border-bottom: 1px solid var(--ink);
         }
 
         .lang-switch button:hover {
-            color: #ffffff;
+            color: var(--ink);
         }
 
         .lang-switch .sep {
-            color: rgba(255,255,255,0.5);
-        }
-
-        /* Quan es "pinned" (fora de la zona de la foto del hero), torna als tons foscos */
-        .lang-switch.pinned button {
-            color: var(--ink-soft);
-        }
-
-        .lang-switch.pinned button.active {
-            color: var(--ink);
-            border-bottom-color: var(--ink);
-        }
-
-        .lang-switch.pinned button:hover {
-            color: var(--ink);
-        }
-
-        .lang-switch.pinned .sep {
             color: var(--line);
         }
 
@@ -160,34 +142,19 @@
             font-size: 0.78rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: rgba(255,255,255,0.82);
+            color: var(--ink-soft);
             padding: 0 0 6px;
             border-bottom: 1px solid transparent;
             transition: color 0.25s ease, border-color 0.25s ease;
         }
 
         .tabs button.active {
-            color: #ffffff;
+            color: var(--ink);
             font-weight: 500;
-            border-bottom: 1px solid #ffffff;
+            border-bottom: 1px solid var(--ink);
         }
 
         .tabs button:hover {
-            color: #ffffff;
-        }
-
-        /* Quan les pestanyes estan "pinned" (fora de la foto del hero, flotant sobre
-           la resta de la pàgina de fons clar), tornen als tons foscos habituals */
-        .tabs.pinned button {
-            color: var(--ink-soft);
-        }
-
-        .tabs.pinned button.active {
-            color: var(--ink);
-            border-bottom-color: var(--ink);
-        }
-
-        .tabs.pinned button:hover {
             color: var(--ink);
         }
 
@@ -216,7 +183,6 @@
 
         /* --- PORTADA (HERO SECTION) --- */
         .hero {
-            position: relative;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -225,12 +191,12 @@
             text-align: center;
             padding: 40px 20px;
             border-bottom: 1px solid var(--line);
+            position: relative;
             background-image:
-                linear-gradient(180deg, rgba(40,32,26,0.42) 0%, rgba(40,32,26,0.30) 45%, rgba(40,32,26,0.55) 100%),
+                linear-gradient(rgba(250, 248, 243, 0.72), rgba(250, 248, 243, 0.86) 60%, var(--cream) 100%),
                 url('fotos/hero.jpg');
             background-size: cover;
             background-position: center 30%;
-            background-repeat: no-repeat;
         }
 
         .hero .names {
@@ -239,16 +205,15 @@
             font-weight: 500;
             font-size: 3.4rem;
             letter-spacing: 0.5px;
-            color: #ffffff;
+            color: var(--ink);
             margin-bottom: 26px;
-            text-shadow: 0 2px 18px rgba(0,0,0,0.25);
         }
 
         .hero .divider {
             width: 70px;
             height: 1px;
-            background: #ffffff;
-            opacity: 0.75;
+            background: var(--ink);
+            opacity: 0.6;
             margin-bottom: 22px;
         }
 
@@ -257,9 +222,8 @@
             font-weight: 600;
             font-size: 1.6rem;
             letter-spacing: 3px;
-            color: #ffffff;
+            color: var(--ink);
             margin-bottom: 8px;
-            text-shadow: 0 2px 14px rgba(0,0,0,0.25);
         }
 
         .hero .lloc {
@@ -267,7 +231,7 @@
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 4px;
-            color: rgba(255,255,255,0.88);
+            color: var(--ink-soft);
         }
 
         /* --- COMPTE ENRERE --- */
@@ -289,9 +253,8 @@
             font-family: 'Cormorant Garamond', serif;
             font-weight: 600;
             font-size: 2.1rem;
-            color: #ffffff;
+            color: var(--ink);
             line-height: 1;
-            text-shadow: 0 2px 14px rgba(0,0,0,0.25);
         }
 
         .countdown .label {
@@ -299,7 +262,7 @@
             font-size: 0.62rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: rgba(255,255,255,0.82);
+            color: var(--ink-soft);
             margin-top: 6px;
         }
 
@@ -307,7 +270,7 @@
             font-family: 'Cormorant Garamond', serif;
             font-weight: 400;
             font-size: 1.8rem;
-            color: rgba(255,255,255,0.55);
+            color: var(--line);
             align-self: flex-start;
             margin-top: 2px;
         }
@@ -359,6 +322,43 @@
             border-top: 1px solid var(--line);
         }
 
+        .detalls-foto {
+            max-width: 420px;
+            margin: 8px auto 40px;
+            padding: 10px;
+            background: #ffffff;
+            box-shadow: 0 4px 24px rgba(40,32,26,0.08);
+        }
+
+        .detalls-foto img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        /* --- FOTOS DECORATIVAS ENTRE SECCIONES --- */
+        .foto-separador {
+            width: 100%;
+            padding: 34px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--cream);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .foto-separador img {
+            display: block;
+            width: auto;
+            height: 280px;
+            max-width: 180px;
+            object-fit: contain;
+            padding: 8px;
+            background: #ffffff;
+            border: 1px solid var(--line);
+            box-shadow: 0 6px 24px rgba(40,32,26,0.10);
+        }
+
         .detall-titol {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 600;
@@ -367,36 +367,6 @@
             color: var(--ink);
             display: block;
             margin-bottom: 6px;
-        }
-
-        /* --- FOTO DINS DE "ENS CASEM!" --- */
-        .foto-nosotros {
-            max-width: 420px;
-            margin: 0 auto 36px;
-            border: 1px solid var(--line);
-            border-radius: 2px;
-            overflow: hidden;
-            box-shadow: 0 8px 28px rgba(40,32,26,0.10);
-        }
-
-        .foto-nosotros img {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
-
-        /* --- FRANGES DECORATIVES ENTRE SECCIONS --- */
-        .foto-separador {
-            width: 100%;
-            height: 340px;
-            overflow: hidden;
-        }
-
-        .foto-separador img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
         }
 
         /* --- SECCIÓ PROGRAMA DEL DIA --- */
@@ -944,8 +914,8 @@
             .hero .data { font-size: 1.3rem; letter-spacing: 2px; }
             h2 { font-size: 2rem; }
             .container, .rsvp-section { padding: 70px 20px; }
-            .foto-nosotros { max-width: 100%; margin-bottom: 30px; }
-            .foto-separador { height: 220px; }
+            .foto-separador { padding: 28px 20px; }
+            .foto-separador img { height: 230px; max-width: 150px; padding: 6px; }
             /* "top" es manté igual en tots dos estats (pinned i no pinned) perquè el
                desplaçament en fixar-se sigui estrictament horitzontal. El "font-size"
                tampoc canvia, per mantenir la mateixa mida de lletra abans i després. */
@@ -1141,8 +1111,8 @@
 
         <div class="scroll-hint" aria-hidden="true">
             <svg viewBox="0 0 16 26" xmlns="http://www.w3.org/2000/svg">
-                <line x1="8" y1="0" x2="8" y2="20" stroke="currentColor" stroke-width="1.4" style="color: #ffffff;" />
-                <polyline points="2,15 8,21 14,15" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="color: #ffffff;" />
+                <line x1="8" y1="0" x2="8" y2="20" stroke="currentColor" stroke-width="1.4" style="color: var(--ink);" />
+                <polyline points="2,15 8,21 14,15" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="color: var(--ink);" />
             </svg>
         </div>
     </section>
@@ -1152,15 +1122,11 @@
     <section id="detalls" class="container">
         <h2 data-i18n="detalls_titol">Ens casem!</h2>
         <p data-i18n="detalls_text">Fa molt de temps que caminem junts, pero ara ha arribat el moment de fer el gran pas. Ens faria una il·lusió immensa que ens acompanyéssiu en aquest dia tan especial per a nosaltres.</p>
-        <div class="foto-nosotros">
+        <div class="detalls-foto">
             <img src="fotos/nosotros.jpg" alt="Belén i Xevi" loading="lazy">
         </div>
         <hr>
     </section>
-
-    <div class="foto-separador">
-        <img src="fotos/separador_1.jpg" alt="" loading="lazy">
-    </div>
 
     <section id="programa" class="programa-section">
         <h2 data-i18n="programa_titol">Programa del dia</h2>
@@ -1196,8 +1162,9 @@
         </div>
     </section>
 
+
     <div class="foto-separador">
-        <img src="fotos/separador_2.jpg" alt="" loading="lazy">
+        <img src="fotos/separador_1.jpg" alt="Belén i Xevi" loading="lazy">
     </div>
 
     <section id="faq" class="faq-section">
@@ -1261,6 +1228,10 @@
             </div>
         </div>
     </section>
+
+    <div class="foto-separador">
+        <img src="fotos/separador_2.jpg" alt="Belén i Xevi" loading="lazy">
+    </div>
 
     <section id="rsvp" class="rsvp-section">
         <h2 data-i18n="rsvp_titol">Confirmació d'assistència</h2>
