@@ -844,6 +844,19 @@
             margin-bottom: 0;
         }
 
+        /* --- OFERTES D'HOTELS (DESPLEGABLE A ALLOTJAMENT) --- */
+        .hotel-offers { margin: 0 0 60px; text-align: left; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+        .hotel-offers .faq-question { padding-left: 4px; padding-right: 4px; }
+        .hotel-offers .faq-answer > div { padding: 0 4px 24px; }
+        .hotel-offers .offer-list { margin: 0; padding-left: 22px; color: var(--ink-soft); }
+        .hotel-offers .offer-list > li { margin-bottom: 18px; padding-left: 4px; font-size: 0.92rem; }
+        .hotel-offers .offer-list > li:last-child { margin-bottom: 0; }
+        .hotel-offers .offer-list ul { margin: 8px 0 0; padding-left: 22px; }
+        .hotel-offers .offer-list ul li { margin-bottom: 4px; }
+        .hotel-offers strong { color: var(--ink); font-weight: 500; }
+        .hotel-offers code { font-family: monospace; font-size: 0.9em; color: var(--ink); background: rgba(40,32,26,0.06); border-radius: 3px; padding: 2px 5px; overflow-wrap: anywhere; }
+
+
         .hotel-list {
             text-align: left;
             border-top: 1px solid var(--line);
@@ -1386,6 +1399,13 @@
                     <p data-i18n="zona_pedregalejo_text">Allunyada del centre, però molt a prop de la platja i del restaurant de la pre-boda. Sol sortir més econòmica.</p>
                 </div>
             </div>
+            <div class="hotel-offers faq-item">
+                <button type="button" class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                    <span data-i18n="hotel_offers_titol">Ofertes d'hotels</span><span class="faq-icon" aria-hidden="true"></span>
+                </button>
+                <div class="faq-answer"><div data-i18n="hotel_offers_content"><ul class="offer-list"><li><strong>AC Hotel Málaga Palacio</strong><ul><li>Habitació estàndard per 219 € per nit, esmorzar i IVA no inclosos. Cup de 20 habitacions per a entrada el 18 i sortida el 20 de juny de 2027. Reserves fins al 18 de maig de 2027 i garantia mitjançant targeta de crèdit.</li></ul></li><li><strong>Hotel Guadalmedina</strong><ul><li>Descompte del 13 % en registrar-se com a membre al web oficial i un 5 % addicional mitjançant el codi <code>WEDDING</code>.</li></ul></li><li><strong>Hotels Petit Palace de Màlaga</strong>: 10 % de descompte amb el codi <code>BODABELENXEVI</code>, més un 10 % addicional en registrar-se a Tripster. Codi disponible del 18 al 20 de juny de 2027, amb reserves subjectes a disponibilitat, als hotels següents:<ul><li>Icon Malabar</li><li>Petit Palace Plaza Málaga</li><li>Petit Palace La Hermosa</li><li>Petit Palace La Equitativa</li><li>Petit Palace Las Vegas</li></ul></li><li><strong>Soho Boutique Hotels</strong>: 20 % de descompte sobre la tarifa flexible vigent, no acumulable amb altres descomptes. La reserva s'ha de sol·licitar escrivint a <code>info@sohohoteles.com</code>, indicant «A l'atenció de Verónica», la referència del casament, l'hotel, els hostes, l'habitació, les dates i el règim. S'exigeix prepagament, amb cancel·lació gratuïta fins a cinc dies abans de l'arribada. Les habitacions estan subjectes a disponibilitat. L'oferta cobreix els hotels:<ul><li>Soho Bahía Málaga</li><li>Soho Malaga</li><li>Soho Urban</li><li>Soho Los Naranjos</li><li>Apartamentos Soho Museo</li></ul></li></ul></div></div>
+            </div>
+
 
             <div class="hotel-list">
                 <h3 data-i18n="hotel_list_titol">Algunes recomanacions</h3>
@@ -1563,9 +1583,11 @@
             if (isOpen) {
                 item.classList.remove('open');
                 answer.style.maxHeight = null;
+                btn.setAttribute('aria-expanded', 'false');
             } else {
                 item.classList.add('open');
                 answer.style.maxHeight = answer.scrollHeight + 'px';
+                btn.setAttribute('aria-expanded', 'true');
             }
         }
 
@@ -1641,6 +1663,9 @@
                 zona_huelin_text: "Allunyada del centre, però molt a prop de la platja. Sol sortir més econòmica.",
                 zona_pedregalejo_titol: "Pedregalejo",
                 zona_pedregalejo_text: "Allunyada del centre, però molt a prop de la platja i del restaurant de la pre-boda. Sol sortir més econòmica.",
+                hotel_offers_titol: "Ofertes d\'hotels",  
+                hotel_offers_content: "<ul class=\"offer-list\"><li><strong>AC Hotel Málaga Palacio</strong><ul><li>Habitació estàndard per 219 € per nit, esmorzar i IVA no inclosos. Cup de 20 habitacions per a entrada el 18 i sortida el 20 de juny de 2027. Reserves fins al 18 de maig de 2027 i garantia mitjançant targeta de crèdit.</li></ul></li><li><strong>Hotel Guadalmedina</strong><ul><li>Descompte del 13 % en registrar-se com a membre al web oficial i un 5 % addicional mitjançant el codi <code>WEDDING</code>.</li></ul></li><li><strong>Hotels Petit Palace de Màlaga</strong>: 10 % de descompte amb el codi <code>BODABELENXEVI</code>, més un 10 % addicional en registrar-se a Tripster. Codi disponible del 18 al 20 de juny de 2027, amb reserves subjectes a disponibilitat, als hotels següents:<ul><li>Icon Malabar</li><li>Petit Palace Plaza Málaga</li><li>Petit Palace La Hermosa</li><li>Petit Palace La Equitativa</li><li>Petit Palace Las Vegas</li></ul></li><li><strong>Soho Boutique Hotels</strong>: 20 % de descompte sobre la tarifa flexible vigent, no acumulable amb altres descomptes. La reserva s'ha de sol·licitar escrivint a <code>info@sohohoteles.com</code>, indicant «A l'atenció de Verónica», la referència del casament, l'hotel, els hostes, l'habitació, les dates i el règim. S'exigeix prepagament, amb cancel·lació gratuïta fins a cinc dies abans de l'arribada. Les habitacions estan subjectes a disponibilitat. L'oferta cobreix els hotels:<ul><li>Soho Bahía Málaga</li><li>Soho Malaga</li><li>Soho Urban</li><li>Soho Los Naranjos</li><li>Apartamentos Soho Museo</li></ul></li></ul>",  
+
                 hotel_list_titol: "Algunes recomanacions",
                 hotel_palacio_zona: "Centre — al costat de la Catedral, piscina a l'àtic",
                 hotel_molina_zona: "Centre — terrassa amb vistes a la Catedral",
@@ -1724,6 +1749,9 @@
                 zona_huelin_text: "Alejada del centro, pero muy cerca de la playa. Suele salir más económica.",
                 zona_pedregalejo_titol: "Pedregalejo",
                 zona_pedregalejo_text: "Alejada del centro, pero muy cerca de la playa y del restaurante de la pre-boda. Suele salir más económica.",
+                hotel_offers_titol: "Ofertas de hoteles",  
+                hotel_offers_content: "<ul class=\"offer-list\"><li><strong>AC Hotel Málaga Palacio</strong><ul><li>Habitación estándar por 219 € por noche, desayuno e IVA no incluidos. Cupo de 20 habitaciones para entrada el 18 y salida el 20 de junio de 2027. Reservas hasta el 18 de mayo de 2027 y garantía mediante tarjeta de crédito.</li></ul></li><li><strong>Hotel Guadalmedina</strong><ul><li>Descuento del 13 % al registrarse como miembro en la web oficial y 5 % adicional mediante el código <code>WEDDING</code>.</li></ul></li><li><strong>Hoteles Petit Palace de Málaga</strong>: 10 % de descuento con el código <code>BODABELENXEVI</code>, más un 10 % adicional al registrarse en Tripster. Código disponible del 18 al 20 de junio de 2027, con reservas sujetas a disponibilidad, en los siguientes hoteles:<ul><li>Icon Malabar</li><li>Petit Palace Plaza Málaga</li><li>Petit Palace La Hermosa</li><li>Petit Palace La Equitativa</li><li>Petit Palace Las Vegas</li></ul></li><li><strong>Soho Boutique Hotels</strong>: 20 % de descuento sobre la tarifa flexible vigente, no acumulable con otros descuentos. La reserva debe solicitarse escribiendo a <code>info@sohohoteles.com</code>, indicando “A la atención de Verónica”, la referencia de la boda, el hotel, huéspedes, habitación, fechas y régimen. Se exige prepago, con cancelación gratuita hasta cinco días antes de la llegada. Las habitaciones están sujetas a disponibilidad. La oferta cubre los hoteles:<ul><li>Soho Bahía Málaga</li><li>Soho Malaga</li><li>Soho Urban</li><li>Soho Los Naranjos</li><li>Apartamentos Soho Museo</li></ul></li></ul>",  
+
                 hotel_list_titol: "Algunas recomendaciones",
                 hotel_palacio_zona: "Centro — junto a la Catedral, piscina en la azotea",
                 hotel_molina_zona: "Centro — terraza con vistas a la Catedral",
