@@ -844,17 +844,72 @@
             margin-bottom: 0;
         }
 
-        /* --- OFERTES D'HOTELS (DESPLEGABLE A ALLOTJAMENT) --- */
-        .hotel-offers { margin: 0 0 60px; text-align: left; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-        .hotel-offers .faq-question { padding-left: 4px; padding-right: 4px; }
-        .hotel-offers .faq-answer > div { padding: 0 4px 24px; }
-        .hotel-offers .offer-list { margin: 0; padding-left: 22px; color: var(--ink-soft); }
-        .hotel-offers .offer-list > li { margin-bottom: 18px; padding-left: 4px; font-size: 0.92rem; }
-        .hotel-offers .offer-list > li:last-child { margin-bottom: 0; }
-        .hotel-offers .offer-list ul { margin: 8px 0 0; padding-left: 22px; }
-        .hotel-offers .offer-list ul li { margin-bottom: 4px; }
-        .hotel-offers strong { color: var(--ink); font-weight: 500; }
-        .hotel-offers code { font-family: monospace; font-size: 0.9em; color: var(--ink); background: rgba(40,32,26,0.06); border-radius: 3px; padding: 2px 5px; overflow-wrap: anywhere; }
+        /* --- DESPLEGABLES D'HOTELS A ALLOTJAMENT --- */
+        .hotel-accordion {
+            margin: 0 0 28px;
+            text-align: left;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+        .hotel-accordion + .hotel-accordion {
+            margin-top: 0;
+        }
+        .hotel-accordion .faq-question {
+            padding-left: 4px;
+            padding-right: 4px;
+        }
+        .hotel-accordion .faq-answer > div {
+            padding: 0 4px 18px;
+        }
+        .hotel-offer-item {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--line);
+        }
+        .hotel-offer-item:last-child {
+            border-bottom: none;
+        }
+        .hotel-offer-name,
+        .hotel-offer-name a,
+        .hotel-offer-hotels a {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--ink);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+        .hotel-offer-name a:hover,
+        .hotel-offer-hotels a:hover {
+            color: var(--ink-soft);
+        }
+        .hotel-offer-text {
+            margin-top: 4px;
+            font-size: 0.82rem;
+            color: var(--ink-soft);
+        }
+        .hotel-offer-hotels {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 3px;
+            margin-top: 10px;
+        }
+        .hotel-offer-hotels a {
+            font-size: 1rem;
+        }
+        .hotel-offer-text code {
+            font-family: monospace;
+            font-size: 0.9em;
+            color: var(--ink);
+            background: rgba(40,32,26,0.06);
+            border-radius: 3px;
+            padding: 2px 5px;
+            overflow-wrap: anywhere;
+        }
+        .hotel-recommendations-content {
+            padding-bottom: 4px;
+        }
+
 
 
         .hotel-list {
@@ -1399,96 +1454,19 @@
                     <p data-i18n="zona_pedregalejo_text">Allunyada del centre, però molt a prop de la platja i del restaurant de la pre-boda. Sol sortir més econòmica.</p>
                 </div>
             </div>
-            <div class="hotel-offers faq-item">
+            <div class="hotel-accordion hotel-offers faq-item">
                 <button type="button" class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-                    <span data-i18n="hotel_offers_titol">Ofertes d'hotels</span><span class="faq-icon" aria-hidden="true"></span>
+                    <span data-i18n="hotel_offers_titol">Ofertes d'hotels</span>
+                    <span class="faq-icon" aria-hidden="true"></span>
                 </button>
-                <div class="faq-answer"><div data-i18n="hotel_offers_content"><ul class="offer-list"><li><strong>AC Hotel Málaga Palacio</strong><ul><li>Habitació estàndard per 219 € per nit, esmorzar i IVA no inclosos. Cup de 20 habitacions per a entrada el 18 i sortida el 20 de juny de 2027. Reserves fins al 18 de maig de 2027 i garantia mitjançant targeta de crèdit.</li></ul></li><li><strong>Hotel Guadalmedina</strong><ul><li>Descompte del 13 % en registrar-se com a membre al web oficial i un 5 % addicional mitjançant el codi <code>WEDDING</code>.</li></ul></li><li><strong>Hotels Petit Palace de Màlaga</strong>: 10 % de descompte amb el codi <code>BODABELENXEVI</code>, més un 10 % addicional en registrar-se a Tripster. Codi disponible del 18 al 20 de juny de 2027, amb reserves subjectes a disponibilitat, als hotels següents:<ul><li>Icon Malabar</li><li>Petit Palace Plaza Málaga</li><li>Petit Palace La Hermosa</li><li>Petit Palace La Equitativa</li><li>Petit Palace Las Vegas</li></ul></li><li><strong>Soho Boutique Hotels</strong>: 20 % de descompte sobre la tarifa flexible vigent, no acumulable amb altres descomptes. La reserva s'ha de sol·licitar escrivint a <code>info@sohohoteles.com</code>, indicant «A l'atenció de Verónica», la referència del casament, l'hotel, els hostes, l'habitació, les dates i el règim. S'exigeix prepagament, amb cancel·lació gratuïta fins a cinc dies abans de l'arribada. Les habitacions estan subjectes a disponibilitat. L'oferta cobreix els hotels:<ul><li>Soho Bahía Málaga</li><li>Soho Malaga</li><li>Soho Urban</li><li>Soho Los Naranjos</li><li>Apartamentos Soho Museo</li></ul></li></ul></div></div>
+                <div class="faq-answer"><div data-i18n="hotel_offers_content"><div class="hotel-offer-item"><div class="hotel-offer-name"><a href="https://maps.google.com/?q=AC+Hotel+M%C3%A1laga+Palacio" target="_blank" rel="noopener">AC Hotel Málaga Palacio</a></div><div class="hotel-offer-text">Habitació estàndard per 219 € per nit, esmorzar i IVA no inclosos. Cup de 20 habitacions per a entrada el 18 i sortida el 20 de juny de 2027. Reserves fins al 18 de maig de 2027 i garantia mitjançant targeta de crèdit.</div></div><div class="hotel-offer-item"><div class="hotel-offer-name"><a href="https://maps.google.com/?q=Hotel+Guadalmedina" target="_blank" rel="noopener">Hotel Guadalmedina</a></div><div class="hotel-offer-text">Descompte del 13 % en registrar-se com a membre al web oficial i un 5 % addicional mitjançant el codi <code>WEDDING</code>.</div></div><div class="hotel-offer-item"><div class="hotel-offer-name">Hotels Petit Palace de Màlaga</div><div class="hotel-offer-text">10 % de descompte amb el codi <code>BODABELENXEVI</code>, més un 10 % addicional en registrar-se a Tripster. Codi disponible del 18 al 20 de juny de 2027, amb reserves subjectes a disponibilitat als hotels següents:</div><div class="hotel-offer-hotels"><a href="https://maps.google.com/?q=Icon+Malabar" target="_blank" rel="noopener">Icon Malabar</a><a href="https://maps.google.com/?q=Petit+Palace+Plaza+M%C3%A1laga" target="_blank" rel="noopener">Petit Palace Plaza Málaga</a><a href="https://maps.google.com/?q=Petit+Palace+La+Hermosa" target="_blank" rel="noopener">Petit Palace La Hermosa</a><a href="https://maps.google.com/?q=Petit+Palace+La+Equitativa" target="_blank" rel="noopener">Petit Palace La Equitativa</a><a href="https://maps.google.com/?q=Petit+Palace+Las+Vegas" target="_blank" rel="noopener">Petit Palace Las Vegas</a></div></div><div class="hotel-offer-item"><div class="hotel-offer-name">Soho Boutique Hotels</div><div class="hotel-offer-text">20 % de descompte sobre la tarifa flexible vigent, no acumulable amb altres descomptes. La reserva s'ha de sol·licitar escrivint a <code>info@sohohoteles.com</code>, indicant «A l'atenció de Verónica», la referència del casament, l'hotel, els hostes, l'habitació, les dates i el règim. S'exigeix prepagament, amb cancel·lació gratuïta fins a cinc dies abans de l'arribada. Les habitacions estan subjectes a disponibilitat. L'oferta cobreix els hotels:</div><div class="hotel-offer-hotels"><a href="https://maps.google.com/?q=Soho+Bah%C3%ADa+M%C3%A1laga" target="_blank" rel="noopener">Soho Bahía Málaga</a><a href="https://maps.google.com/?q=Soho+Malaga" target="_blank" rel="noopener">Soho Malaga</a><a href="https://maps.google.com/?q=Soho+Urban" target="_blank" rel="noopener">Soho Urban</a><a href="https://maps.google.com/?q=Soho+Los+Naranjos" target="_blank" rel="noopener">Soho Los Naranjos</a><a href="https://maps.google.com/?q=Apartamentos+Soho+Museo" target="_blank" rel="noopener">Apartamentos Soho Museo</a></div></div></div></div>
             </div>
-
-
-            <div class="hotel-list">
-                <h3 data-i18n="hotel_list_titol">Algunes recomanacions</h3>
-
-                <div class="hotel-item">
-                    <div>
-                        <div class="hotel-nom"><a href="https://maps.google.com/?q=AC+Hotel+Málaga+Palacio" target="_blank" rel="noopener">AC Hotel Málaga Palacio</a><span class="hotel-estrelles">★★★★</span></div>
-                        <div class="hotel-zona" data-i18n="hotel_palacio_zona">Centre — al costat de la Catedral, piscina a l'àtic</div>
-                    </div>
-                    <div class="hotel-preu">€€€</div>
-                </div>
-
-                <div class="hotel-item">
-                    <div>
-                        <div class="hotel-nom"><a href="https://maps.google.com/?q=Hotel+Molina+Lario" target="_blank" rel="noopener">Molina Lario</a><span class="hotel-estrelles">★★★★</span></div>
-                        <div class="hotel-zona" data-i18n="hotel_molina_zona">Centre — terrassa amb vistes a la Catedral</div>
-                    </div>
-                    <div class="hotel-preu">€€€</div>
-                </div>
-
-                <div class="hotel-item">
-                    <div>
-                        <div class="hotel-nom"><a href="https://maps.google.com/?q=Palacio+Solecio+Málaga" target="_blank" rel="noopener">Palacio Solecio</a><span class="hotel-estrelles">★★★★</span></div>
-                        <div class="hotel-zona" data-i18n="hotel_solecio_zona">Centre històric — palau del segle XVIII, 5 estrelles</div>
-                    </div>
-                    <div class="hotel-preu">€€€€</div>
-                </div>
-
-                <div class="hotel-item">
-                    <div>
-                        <div class="hotel-nom"><a href="https://maps.google.com/?q=Soho+Boutique+Bahía+Málaga" target="_blank" rel="noopener">Soho Boutique Bahía Málaga</a><span class="hotel-estrelles">★★★★</span></div>
-                        <div class="hotel-zona" data-i18n="hotel_bahia_zona">El Soho — terrassa amb bar, bon ambient</div>
-                    </div>
-                    <div class="hotel-preu">€€</div>
-                </div>
-
-                <div class="hotel-item">
-                    <div>
-                        <div class="hotel-nom"><a href="https://maps.google.com/?q=Soho+Boutique+Equitativa" target="_blank" rel="noopener">Soho Boutique Equitativa</a><span class="hotel-estrelles">★★★★</span></div>
-                        <div class="hotel-zona" data-i18n="hotel_equitativa_zona">El Soho — edifici emblemàtic al carrer Larios</div>
-                    </div>
-                    <div class="hotel-preu">€€</div>
-                </div>
-
-                <div class="hotel-item">
-                    <div>
-                        <div class="hotel-nom"><a href="https://maps.google.com/?q=Soho+Boutique+Colón" target="_blank" rel="noopener">Soho Boutique Colón</a><span class="hotel-estrelles">★★★★</span></div>
-                        <div class="hotel-zona" data-i18n="hotel_colon_zona">Centre — a prop del carrer Larios i la Catedral</div>
-                    </div>
-                    <div class="hotel-preu">€€</div>
-                </div>
-
-                <div class="hotel-item">
-                    <div>
-                        <div class="hotel-nom"><a href="https://maps.google.com/?q=Hotel+Soho+Boutique+Las+Vegas" target="_blank" rel="noopener">Hotel Soho Boutique Las Vegas</a><span class="hotel-estrelles">★★★</span></div>
-                        <div class="hotel-zona" data-i18n="hotel_lasvegas_zona">La Malagueta — davant la platja</div>
-                    </div>
-                    <div class="hotel-preu">€€</div>
-                </div>
-
-                <div class="hotel-item">
-                    <div>
-                        <div class="hotel-nom"><a href="https://maps.google.com/?q=Áurea+Palacio+de+la+Tinta+Málaga" target="_blank" rel="noopener">Áurea Palacio de la Tinta</a><span class="hotel-estrelles">★★★★★</span></div>
-                        <div class="hotel-zona" data-i18n="hotel_tinta_zona">Centre històric — palauet restaurat, molt cèntric</div>
-                    </div>
-                    <div class="hotel-preu">€€€</div>
-                </div>
-
-                <div class="hotel-item">
-                    <div>
-                        <div class="hotel-nom"><a href="https://maps.google.com/?q=Gran+Hotel+Miramar+Málaga" target="_blank" rel="noopener">Gran Hotel Miramar</a><span class="hotel-estrelles">★★★★★</span></div>
-                        <div class="hotel-zona" data-i18n="hotel_miramar_zona">La Malagueta — davant la platja, 5 estrelles</div>
-                    </div>
-                    <div class="hotel-preu">€€€€</div>
-                </div>
-
-                <div class="hotel-item">
-                    <div>
-                        <div class="hotel-nom"><a href="https://maps.app.goo.gl/drEbE7zbdRTJgsY7A" target="_blank" rel="noopener noreferrer">ME Málaga by Meliá</a><span class="hotel-estrelles">★★★★★</span></div>
-                        <div class="hotel-zona" data-i18n="hotel_me_zona">Centre — al costat de la Plaça de la Mercè, piscina infinity a l'àtic</div>
-                    </div>
-                    <div class="hotel-preu">€€€€</div>
-                </div>
+            <div class="hotel-accordion hotel-recommendations faq-item">
+                <button type="button" class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                    <span data-i18n="hotel_list_titol">Altres recomanacions</span>
+                    <span class="faq-icon" aria-hidden="true"></span>
+                </button>
+                <div class="faq-answer"><div class="hotel-recommendations-content"><div class="hotel-item"><div><div class="hotel-nom"><a href="https://maps.google.com/?q=AC+Hotel+M%C3%A1laga+Palacio" target="_blank" rel="noopener">AC Hotel Málaga Palacio</a><span class="hotel-estrelles">★★★★</span></div><div class="hotel-zona" data-i18n="hotel_palacio_zona"></div></div><div class="hotel-preu">€€€</div></div><div class="hotel-item"><div><div class="hotel-nom"><a href="https://maps.google.com/?q=Palacio+Solecio+M%C3%A1laga" target="_blank" rel="noopener">Palacio Solecio</a><span class="hotel-estrelles">★★★★</span></div><div class="hotel-zona" data-i18n="hotel_solecio_zona"></div></div><div class="hotel-preu">€€€€</div></div><div class="hotel-item"><div><div class="hotel-nom"><a href="https://maps.google.com/?q=Petit+Palace+La+Equitativa+M%C3%A1laga" target="_blank" rel="noopener">Petit Palace La Equitativa</a><span class="hotel-estrelles">★★★★</span></div><div class="hotel-zona" data-i18n="hotel_equitativa_zona"></div></div><div class="hotel-preu">€€</div></div><div class="hotel-item"><div><div class="hotel-nom"><a href="https://maps.google.com/?q=Petit+Palace+La+Hermosa+M%C3%A1laga" target="_blank" rel="noopener">Petit Palace La Hermosa</a><span class="hotel-estrelles">★★★★</span></div><div class="hotel-zona" data-i18n="hotel_colon_zona"></div></div><div class="hotel-preu">€€</div></div><div class="hotel-item"><div><div class="hotel-nom"><a href="https://maps.google.com/?q=%C3%81urea+Palacio+de+la+Tinta+M%C3%A1laga" target="_blank" rel="noopener">Áurea Palacio de la Tinta</a><span class="hotel-estrelles">★★★★★</span></div><div class="hotel-zona" data-i18n="hotel_tinta_zona"></div></div><div class="hotel-preu">€€€</div></div><div class="hotel-item"><div><div class="hotel-nom"><a href="https://maps.google.com/?q=Gran+Hotel+Miramar+M%C3%A1laga" target="_blank" rel="noopener">Gran Hotel Miramar</a><span class="hotel-estrelles">★★★★★</span></div><div class="hotel-zona" data-i18n="hotel_miramar_zona"></div></div><div class="hotel-preu">€€€€</div></div><div class="hotel-item"><div><div class="hotel-nom"><a href="https://maps.app.goo.gl/drEbE7zbdRTJgsY7A" target="_blank" rel="noopener noreferrer">ME Málaga by Meliá</a><span class="hotel-estrelles">★★★★★</span></div><div class="hotel-zona" data-i18n="hotel_me_zona"></div></div><div class="hotel-preu">€€€€</div></div></div></div>
             </div>
         </section>
     </div>
@@ -1664,14 +1642,14 @@
                 zona_pedregalejo_titol: "Pedregalejo",
                 zona_pedregalejo_text: "Allunyada del centre, però molt a prop de la platja i del restaurant de la pre-boda. Sol sortir més econòmica.",
                 hotel_offers_titol: "Ofertes d\'hotels",  
-                hotel_offers_content: "<ul class=\"offer-list\"><li><strong>AC Hotel Málaga Palacio</strong><ul><li>Habitació estàndard per 219 € per nit, esmorzar i IVA no inclosos. Cup de 20 habitacions per a entrada el 18 i sortida el 20 de juny de 2027. Reserves fins al 18 de maig de 2027 i garantia mitjançant targeta de crèdit.</li></ul></li><li><strong>Hotel Guadalmedina</strong><ul><li>Descompte del 13 % en registrar-se com a membre al web oficial i un 5 % addicional mitjançant el codi <code>WEDDING</code>.</li></ul></li><li><strong>Hotels Petit Palace de Màlaga</strong>: 10 % de descompte amb el codi <code>BODABELENXEVI</code>, més un 10 % addicional en registrar-se a Tripster. Codi disponible del 18 al 20 de juny de 2027, amb reserves subjectes a disponibilitat, als hotels següents:<ul><li>Icon Malabar</li><li>Petit Palace Plaza Málaga</li><li>Petit Palace La Hermosa</li><li>Petit Palace La Equitativa</li><li>Petit Palace Las Vegas</li></ul></li><li><strong>Soho Boutique Hotels</strong>: 20 % de descompte sobre la tarifa flexible vigent, no acumulable amb altres descomptes. La reserva s'ha de sol·licitar escrivint a <code>info@sohohoteles.com</code>, indicant «A l'atenció de Verónica», la referència del casament, l'hotel, els hostes, l'habitació, les dates i el règim. S'exigeix prepagament, amb cancel·lació gratuïta fins a cinc dies abans de l'arribada. Les habitacions estan subjectes a disponibilitat. L'oferta cobreix els hotels:<ul><li>Soho Bahía Málaga</li><li>Soho Malaga</li><li>Soho Urban</li><li>Soho Los Naranjos</li><li>Apartamentos Soho Museo</li></ul></li></ul>",  
+                hotel_offers_content: "<div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\"><a href=\"https://maps.google.com/?q=AC+Hotel+M%C3%A1laga+Palacio\" target=\"_blank\" rel=\"noopener\">AC Hotel Málaga Palacio</a></div><div class=\"hotel-offer-text\">Habitació estàndard per 219 € per nit, esmorzar i IVA no inclosos. Cup de 20 habitacions per a entrada el 18 i sortida el 20 de juny de 2027. Reserves fins al 18 de maig de 2027 i garantia mitjançant targeta de crèdit.</div></div><div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\"><a href=\"https://maps.google.com/?q=Hotel+Guadalmedina\" target=\"_blank\" rel=\"noopener\">Hotel Guadalmedina</a></div><div class=\"hotel-offer-text\">Descompte del 13 % en registrar-se com a membre al web oficial i un 5 % addicional mitjançant el codi <code>WEDDING</code>.</div></div><div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\">Hotels Petit Palace de Màlaga</div><div class=\"hotel-offer-text\">10 % de descompte amb el codi <code>BODABELENXEVI</code>, més un 10 % addicional en registrar-se a Tripster. Codi disponible del 18 al 20 de juny de 2027, amb reserves subjectes a disponibilitat als hotels següents:</div><div class=\"hotel-offer-hotels\"><a href=\"https://maps.google.com/?q=Icon+Malabar\" target=\"_blank\" rel=\"noopener\">Icon Malabar</a><a href=\"https://maps.google.com/?q=Petit+Palace+Plaza+M%C3%A1laga\" target=\"_blank\" rel=\"noopener\">Petit Palace Plaza Málaga</a><a href=\"https://maps.google.com/?q=Petit+Palace+La+Hermosa\" target=\"_blank\" rel=\"noopener\">Petit Palace La Hermosa</a><a href=\"https://maps.google.com/?q=Petit+Palace+La+Equitativa\" target=\"_blank\" rel=\"noopener\">Petit Palace La Equitativa</a><a href=\"https://maps.google.com/?q=Petit+Palace+Las+Vegas\" target=\"_blank\" rel=\"noopener\">Petit Palace Las Vegas</a></div></div><div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\">Soho Boutique Hotels</div><div class=\"hotel-offer-text\">20 % de descompte sobre la tarifa flexible vigent, no acumulable amb altres descomptes. La reserva s'ha de sol·licitar escrivint a <code>info@sohohoteles.com</code>, indicant «A l'atenció de Verónica», la referència del casament, l'hotel, els hostes, l'habitació, les dates i el règim. S'exigeix prepagament, amb cancel·lació gratuïta fins a cinc dies abans de l'arribada. Les habitacions estan subjectes a disponibilitat. L'oferta cobreix els hotels:</div><div class=\"hotel-offer-hotels\"><a href=\"https://maps.google.com/?q=Soho+Bah%C3%ADa+M%C3%A1laga\" target=\"_blank\" rel=\"noopener\">Soho Bahía Málaga</a><a href=\"https://maps.google.com/?q=Soho+Malaga\" target=\"_blank\" rel=\"noopener\">Soho Malaga</a><a href=\"https://maps.google.com/?q=Soho+Urban\" target=\"_blank\" rel=\"noopener\">Soho Urban</a><a href=\"https://maps.google.com/?q=Soho+Los+Naranjos\" target=\"_blank\" rel=\"noopener\">Soho Los Naranjos</a><a href=\"https://maps.google.com/?q=Apartamentos+Soho+Museo\" target=\"_blank\" rel=\"noopener\">Apartamentos Soho Museo</a></div></div>",  
 
-                hotel_list_titol: "Algunes recomanacions",
+                hotel_list_titol: "Altres recomanacions",
                 hotel_palacio_zona: "Centre — al costat de la Catedral, piscina a l'àtic",
                 hotel_molina_zona: "Centre — terrassa amb vistes a la Catedral",
                 hotel_solecio_zona: "Centre històric — palau del segle XVIII, 5 estrelles",
                 hotel_bahia_zona: "El Soho — terrassa amb bar, bon ambient",
-                hotel_equitativa_zona: "El Soho — edifici emblemàtic al carrer Larios",
+                hotel_equitativa_zona: "Centre — edifici emblemàtic al carrer Larios",
                 hotel_colon_zona: "Centre — a prop del carrer Larios i la Catedral",
                 hotel_lasvegas_zona: "La Malagueta — davant la platja",
                 hotel_tinta_zona: "Centre històric — palauet restaurat, molt cèntric",
@@ -1750,14 +1728,14 @@
                 zona_pedregalejo_titol: "Pedregalejo",
                 zona_pedregalejo_text: "Alejada del centro, pero muy cerca de la playa y del restaurante de la pre-boda. Suele salir más económica.",
                 hotel_offers_titol: "Ofertas de hoteles",  
-                hotel_offers_content: "<ul class=\"offer-list\"><li><strong>AC Hotel Málaga Palacio</strong><ul><li>Habitación estándar por 219 € por noche, desayuno e IVA no incluidos. Cupo de 20 habitaciones para entrada el 18 y salida el 20 de junio de 2027. Reservas hasta el 18 de mayo de 2027 y garantía mediante tarjeta de crédito.</li></ul></li><li><strong>Hotel Guadalmedina</strong><ul><li>Descuento del 13 % al registrarse como miembro en la web oficial y 5 % adicional mediante el código <code>WEDDING</code>.</li></ul></li><li><strong>Hoteles Petit Palace de Málaga</strong>: 10 % de descuento con el código <code>BODABELENXEVI</code>, más un 10 % adicional al registrarse en Tripster. Código disponible del 18 al 20 de junio de 2027, con reservas sujetas a disponibilidad, en los siguientes hoteles:<ul><li>Icon Malabar</li><li>Petit Palace Plaza Málaga</li><li>Petit Palace La Hermosa</li><li>Petit Palace La Equitativa</li><li>Petit Palace Las Vegas</li></ul></li><li><strong>Soho Boutique Hotels</strong>: 20 % de descuento sobre la tarifa flexible vigente, no acumulable con otros descuentos. La reserva debe solicitarse escribiendo a <code>info@sohohoteles.com</code>, indicando “A la atención de Verónica”, la referencia de la boda, el hotel, huéspedes, habitación, fechas y régimen. Se exige prepago, con cancelación gratuita hasta cinco días antes de la llegada. Las habitaciones están sujetas a disponibilidad. La oferta cubre los hoteles:<ul><li>Soho Bahía Málaga</li><li>Soho Malaga</li><li>Soho Urban</li><li>Soho Los Naranjos</li><li>Apartamentos Soho Museo</li></ul></li></ul>",  
+                hotel_offers_content: "<div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\"><a href=\"https://maps.google.com/?q=AC+Hotel+M%C3%A1laga+Palacio\" target=\"_blank\" rel=\"noopener\">AC Hotel Málaga Palacio</a></div><div class=\"hotel-offer-text\">Habitación estándar por 219 € por noche, desayuno e IVA no incluidos. Cupo de 20 habitaciones para entrada el 18 y salida el 20 de junio de 2027. Reservas hasta el 18 de mayo de 2027 y garantía mediante tarjeta de crédito.</div></div><div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\"><a href=\"https://maps.google.com/?q=Hotel+Guadalmedina\" target=\"_blank\" rel=\"noopener\">Hotel Guadalmedina</a></div><div class=\"hotel-offer-text\">Descuento del 13 % al registrarse como miembro en la web oficial y 5 % adicional mediante el código <code>WEDDING</code>.</div></div><div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\">Hoteles Petit Palace de Málaga</div><div class=\"hotel-offer-text\">10 % de descuento con el código <code>BODABELENXEVI</code>, más un 10 % adicional al registrarse en Tripster. Código disponible del 18 al 20 de junio de 2027, con reservas sujetas a disponibilidad en los siguientes hoteles:</div><div class=\"hotel-offer-hotels\"><a href=\"https://maps.google.com/?q=Icon+Malabar\" target=\"_blank\" rel=\"noopener\">Icon Malabar</a><a href=\"https://maps.google.com/?q=Petit+Palace+Plaza+M%C3%A1laga\" target=\"_blank\" rel=\"noopener\">Petit Palace Plaza Málaga</a><a href=\"https://maps.google.com/?q=Petit+Palace+La+Hermosa\" target=\"_blank\" rel=\"noopener\">Petit Palace La Hermosa</a><a href=\"https://maps.google.com/?q=Petit+Palace+La+Equitativa\" target=\"_blank\" rel=\"noopener\">Petit Palace La Equitativa</a><a href=\"https://maps.google.com/?q=Petit+Palace+Las+Vegas\" target=\"_blank\" rel=\"noopener\">Petit Palace Las Vegas</a></div></div><div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\">Soho Boutique Hotels</div><div class=\"hotel-offer-text\">20 % de descuento sobre la tarifa flexible vigente, no acumulable con otros descuentos. La reserva debe solicitarse escribiendo a <code>info@sohohoteles.com</code>, indicando “A la atención de Verónica”, la referencia de la boda, el hotel, huéspedes, habitación, fechas y régimen. Se exige prepago, con cancelación gratuita hasta cinco días antes de la llegada. Las habitaciones están sujetas a disponibilidad. La oferta cubre los hoteles:</div><div class=\"hotel-offer-hotels\"><a href=\"https://maps.google.com/?q=Soho+Bah%C3%ADa+M%C3%A1laga\" target=\"_blank\" rel=\"noopener\">Soho Bahía Málaga</a><a href=\"https://maps.google.com/?q=Soho+Malaga\" target=\"_blank\" rel=\"noopener\">Soho Malaga</a><a href=\"https://maps.google.com/?q=Soho+Urban\" target=\"_blank\" rel=\"noopener\">Soho Urban</a><a href=\"https://maps.google.com/?q=Soho+Los+Naranjos\" target=\"_blank\" rel=\"noopener\">Soho Los Naranjos</a><a href=\"https://maps.google.com/?q=Apartamentos+Soho+Museo\" target=\"_blank\" rel=\"noopener\">Apartamentos Soho Museo</a></div></div>",  
 
-                hotel_list_titol: "Algunas recomendaciones",
+                hotel_list_titol: "Otras recomendaciones",
                 hotel_palacio_zona: "Centro — junto a la Catedral, piscina en la azotea",
                 hotel_molina_zona: "Centro — terraza con vistas a la Catedral",
                 hotel_solecio_zona: "Centro histórico — palacio del siglo XVIII, 5 estrellas",
                 hotel_bahia_zona: "El Soho — terraza con bar, buen ambiente",
-                hotel_equitativa_zona: "El Soho — edificio emblemático en la calle Larios",
+                hotel_equitativa_zona: "Centro — edificio emblemático en la calle Larios",
                 hotel_colon_zona: "Centro — cerca de la calle Larios y la Catedral",
                 hotel_lasvegas_zona: "La Malagueta — frente a la playa",
                 hotel_tinta_zona: "Centro histórico — palacete restaurado, muy céntrico",
