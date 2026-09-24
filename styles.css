@@ -1,0 +1,1068 @@
+
+        /* --- ESTILS GENERALS (RESET) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ================================================================
+           CONFIGURACIÓ VISUAL RÀPIDA
+           Canvia aquí els valors de disseny més habituals. La resta del CSS
+           utilitza aquestes variables per evitar haver de buscar valors repetits.
+           ================================================================ */
+        :root {
+            /* Colors */
+            --cream: #faf8f3;
+            --cream-deep: #f3f0e9;
+            --ink: #28201a;
+            --ink-soft: #6b6358;
+            --line: #d8d2c4;
+
+            /* Amplades / espais principals */
+            --content-max: 800px;
+            --timeline-max: 480px;
+            --section-padding-x: 20px;
+
+            /* Fotografies decoratives */
+            --photo-frame-width: min(30vw, 220px);
+            --photo-frame-gap: 28px;
+            --photo-frame-padding: 10px;
+            --photo-frame-shadow: 0 4px 24px rgba(40,32,26,0.08);
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--cream);
+            color: var(--ink-soft);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* --- SELECTOR D'IDIOMA --- */
+        .lang-switch {
+            position: fixed;
+            top: 22px;
+            right: 26px;
+            z-index: 160;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.78rem;
+            letter-spacing: 1px;
+            transform: translateX(0);
+            /* Només "right" i "transform" entren en transició: com que "top" mai canvia
+               de valor, el moviment resultant és estrictament horitzontal (sense
+               desplaçament vertical ni diagonal). */
+            transition: right 0.35s ease, transform 0.35s ease;
+        }
+
+        .lang-switch button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--ink-soft);
+            font-family: inherit;
+            font-size: inherit;
+            letter-spacing: inherit;
+            /* Sense padding superior, igual que .tabs button, perquè el text quedi
+               exactament a la mateixa alçada que els títols de les pestanyes. */
+            padding: 0 2px 4px;
+            transition: color 0.25s ease;
+        }
+
+        .lang-switch button.active {
+            color: var(--ink);
+            font-weight: 500;
+            border-bottom: 1px solid var(--ink);
+        }
+
+        .lang-switch button:hover {
+            color: var(--ink);
+        }
+
+        .lang-switch .sep {
+            color: var(--line);
+        }
+
+        /* --- HEADER FIX --- */
+        /* Ara és només una barra de fons (color + línia inferior) que apareix quan les
+           pestanyes originals (.tabs) i el selector d'idioma (.lang-switch) es "fixen"
+           (classe .pinned). Ja no conté botons propis: són els mateixos .tabs/.lang-switch
+           originals els que es fixen en aquest punt, evitant duplicats i qualsevol salt. */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 150;
+            background: var(--cream);
+            border-bottom: 1px solid var(--line);
+            height: 52px;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .fixed-header.visible {
+            opacity: 1;
+        }
+
+        /* --- PESTANYES DE NAVEGACIÓ --- */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 36px;
+            margin-top: 68px;
+            flex-wrap: wrap;
+        }
+
+        /* Quan .tabs es "fixa" (JS afegeix aquesta classe en l'instant exacte en què,
+           per scroll normal, arribaria a aquesta posició), es queda ancorada aquí per
+           sempre — mai desapareix, ni fa cap salt, perquè el punt de fixació coincideix
+           exactament amb la seva posició natural en aquell moment del scroll. */
+        .tabs.pinned {
+            position: fixed;
+            top: 22px;
+            left: 0;
+            right: 0;
+            margin-top: 0;
+            z-index: 160;
+            /* El contenidor s'estén per tot l'ample de pantalla (left:0;right:0) per poder
+               centrar els botons, però com que no té fons, no ha de "capturar" clics a les
+               zones laterals buides: si no, bloqueja el selector CAT/ESP que hi ha sota,
+               encara que visualment no s'hi solapin. Els botons recuperen els clics amb
+               pointer-events:auto. */
+            pointer-events: none;
+        }
+
+        .tabs.pinned button {
+            pointer-events: auto;
+        }
+
+        .tabs button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--ink-soft);
+            padding: 0 0 6px;
+            border-bottom: 1px solid transparent;
+            transition: color 0.25s ease, border-color 0.25s ease;
+        }
+
+        .tabs button.active {
+            color: var(--ink);
+            font-weight: 500;
+            border-bottom: 1px solid var(--ink);
+        }
+
+        .tabs button:hover {
+            color: var(--ink);
+        }
+
+        /* --- FLETXA DE SCROLL --- */
+        .scroll-hint {
+            display: flex;
+            justify-content: center;
+            margin-top: 56px;
+        }
+
+        .scroll-hint svg {
+            width: 16px;
+            height: 26px;
+            opacity: 0.35;
+            animation: scroll-bounce 2.2s ease-in-out infinite;
+        }
+
+        @keyframes scroll-bounce {
+            0%, 100% { transform: translateY(0); opacity: 0.35; }
+            50% { transform: translateY(8px); opacity: 0.7; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .scroll-hint svg { animation: none; }
+        }
+
+        /* --- PORTADA (HERO SECTION) --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 1px solid var(--line);
+            position: relative;
+            background-image:
+                linear-gradient(rgba(250, 248, 243, 0.72), rgba(250, 248, 243, 0.86) 60%, var(--cream) 100%),
+                url('fotos/hero.jpg');
+            background-size: cover;
+            background-position: center 30%;
+        }
+
+        .hero .names {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: 3.4rem;
+            letter-spacing: 0.5px;
+            color: var(--ink);
+            margin-bottom: 26px;
+        }
+
+        .hero .divider {
+            width: 70px;
+            height: 1px;
+            background: var(--ink);
+            opacity: 0.6;
+            margin-bottom: 22px;
+        }
+
+        .hero .data {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: 1.6rem;
+            letter-spacing: 3px;
+            color: var(--ink);
+            margin-bottom: 8px;
+        }
+
+        .hero .lloc {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--ink-soft);
+        }
+
+        /* --- COMPTE ENRERE --- */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            margin-top: 34px;
+        }
+
+        .countdown .unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 56px;
+        }
+
+        .countdown .num {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: 2.1rem;
+            color: var(--ink);
+            line-height: 1;
+        }
+
+        .countdown .label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.62rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--ink-soft);
+            margin-top: 6px;
+        }
+
+        .countdown .colon {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: 1.8rem;
+            color: var(--line);
+            align-self: flex-start;
+            margin-top: 2px;
+        }
+
+        .btn-scroll {
+            margin-top: 48px;
+            text-decoration: none;
+            color: var(--ink);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            border-bottom: 1px solid var(--ink);
+            padding-bottom: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-scroll:hover {
+            color: var(--ink-soft);
+            border-color: var(--ink-soft);
+        }
+
+        /* --- SECCIÓ CONTINGUT --- */
+        .container {
+            max-width: var(--content-max);
+            margin: 0 auto;
+            padding: 100px 20px 36px;
+            text-align: center;
+        }
+
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 2.4rem;
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 24px;
+        }
+
+        p {
+            font-size: 1rem;
+            color: var(--ink-soft);
+            margin-bottom: 30px;
+        }
+
+        .container hr {
+            width: 50px;
+            margin: 0 auto;
+            border: 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .detalls-foto {
+            max-width: 420px;
+            margin: 8px auto 40px;
+            padding: 10px;
+            background: #ffffff;
+            box-shadow: var(--photo-frame-shadow);
+        }
+
+        .detalls-foto img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        /* --- FOTOS DECORATIVAS ENMARCADAS --- */
+        .fotos-separadores {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: var(--photo-frame-gap);
+            padding: 10px var(--section-padding-x) 55px;
+            background-color: var(--cream);
+        }
+
+        .foto-separador {
+            width: var(--photo-frame-width);
+            padding: var(--photo-frame-padding);
+            background: #ffffff;
+            border: 1px solid var(--line);
+            box-shadow: 0 4px 24px rgba(40,32,26,0.08);
+        }
+
+        .foto-separador img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .detall-titol {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: 1.15rem;
+            letter-spacing: 1px;
+            color: var(--ink);
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        /* --- SECCIÓ PROGRAMA DEL DIA --- */
+        .programa-section {
+            background-color: var(--cream);
+            padding: 36px 20px 56px;
+            text-align: center;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .timeline {
+            max-width: var(--timeline-max);
+            margin: 50px auto 0;
+            text-align: left;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 78px;
+            top: 6px;
+            bottom: 6px;
+            width: 1px;
+            background: var(--line);
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            position: relative;
+            padding-bottom: 38px;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-item .hora {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: var(--ink);
+            width: 56px;
+            flex-shrink: 0;
+            text-align: right;
+            line-height: 1.3;
+            padding-top: 1px;
+        }
+
+        .timeline-item .punt {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--cream);
+            border: 1.5px solid var(--ink);
+            flex-shrink: 0;
+            position: absolute;
+            left: 78px;
+            top: 8px;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .timeline-item .text {
+            font-size: 0.95rem;
+            color: var(--ink-soft);
+            padding-top: 1px;
+            padding-left: 34px;
+        }
+
+        .timeline-item .text strong {
+            color: var(--ink);
+            font-weight: 500;
+        }
+
+        .timeline-item .text .loc-link {
+            color: var(--ink);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .timeline-item .text .loc-link:hover {
+            color: var(--ink-soft);
+        }
+
+        .timeline-item .text.nowrap-line {
+            white-space: nowrap;
+        }
+
+        /* --- RESALTAT TEMPORAL DE LA TARGETA D'UBICACIÓ EN FER-HI SALT --- */
+        .location-card.highlight {
+            animation: locHighlight 1.6s ease-out;
+            border-radius: 6px;
+        }
+        @keyframes locHighlight {
+            0%   { background-color: rgba(40, 32, 26, 0.09); box-shadow: 0 0 0 1px rgba(40,32,26,0.12); }
+            100% { background-color: rgba(40, 32, 26, 0); box-shadow: 0 0 0 1px rgba(40,32,26,0); }
+        }
+
+        /* --- SECCIÓ INFORMACIÓ PRÀCTICA (FAQ) --- */
+        .faq-section {
+            background-color: var(--cream);
+            padding: 36px 20px 56px;
+            text-align: center;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .faq-list {
+            max-width: 640px;
+            margin: 50px auto 0;
+            text-align: left;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--line);
+        }
+
+        .faq-item:first-child {
+            border-top: 1px solid var(--line);
+        }
+
+        .faq-question {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 22px 4px;
+            text-align: left;
+            font-family: 'Montserrat', sans-serif;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 1.02rem;
+            letter-spacing: 0.2px;
+            color: var(--ink);
+        }
+
+        .faq-question .faq-icon {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            position: relative;
+        }
+
+        .faq-question .faq-icon::before,
+        .faq-question .faq-icon::after {
+            content: '';
+            position: absolute;
+            background: var(--ink);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question .faq-icon::before {
+            top: 9px;
+            left: 2px;
+            width: 16px;
+            height: 1.5px;
+        }
+
+        .faq-question .faq-icon::after {
+            top: 2px;
+            left: 9px;
+            width: 1.5px;
+            height: 16px;
+        }
+
+        .faq-item.open .faq-icon::after {
+            transform: rotate(90deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+        }
+
+        .faq-answer p {
+            font-size: 0.95rem;
+            padding: 0 4px;
+            margin-bottom: 14px;
+        }
+
+        .faq-answer > div > p:last-child {
+            margin-bottom: 0;
+            padding-bottom: 22px;
+        }
+
+        /* --- SECCIÓ RSVP (FORMULARI) --- */
+        .rsvp-section {
+            background-color: var(--cream-deep);
+            padding: 36px 20px 100px;
+            text-align: center;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        /* --- FORMULARI RSVP --- */
+        .rsvp-form {
+            max-width: 520px;
+            margin: 50px auto 0;
+            text-align: left;
+        }
+
+        .rsvp-form .field {
+            margin-bottom: 28px;
+        }
+
+        .rsvp-form label {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: 1.1rem;
+            color: var(--ink);
+            margin-bottom: 10px;
+        }
+
+        .rsvp-form .hint {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-style: normal;
+            font-size: 0.78rem;
+            color: var(--ink-soft);
+            margin-top: 4px;
+            font-weight: 300;
+        }
+
+        .rsvp-form input[type="text"],
+        .rsvp-form textarea {
+            width: 100%;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            color: var(--ink);
+            background: #ffffff;
+            border: 1px solid var(--line);
+            border-radius: 3px;
+            padding: 12px 14px;
+            outline: none;
+            transition: border-color 0.25s ease;
+        }
+
+        .rsvp-form textarea {
+            resize: vertical;
+            min-height: 80px;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.5;
+        }
+
+        .rsvp-form input[type="text"]:focus,
+        .rsvp-form textarea:focus {
+            border-color: var(--ink);
+        }
+
+        .rsvp-form .radio-group {
+            display: flex;
+            gap: 14px;
+        }
+
+        .rsvp-form .radio-option {
+            flex: 1;
+        }
+
+        .rsvp-form .radio-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .rsvp-form .radio-option label {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 0.85rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--ink-soft);
+            background: #ffffff;
+            border: 1px solid var(--line);
+            border-radius: 3px;
+            padding: 12px 10px;
+            margin: 0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .rsvp-form .radio-option input[type="radio"]:checked + label {
+            background: var(--ink);
+            border-color: var(--ink);
+            color: var(--cream);
+        }
+
+        .rsvp-form .radio-option label:hover {
+            border-color: var(--ink);
+        }
+
+        .rsvp-form .conditional {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+        }
+
+        .rsvp-form .conditional.open {
+            max-height: 260px;
+        }
+
+        .rsvp-form .conditional .field {
+            padding-top: 4px;
+        }
+
+        .rsvp-form button[type="submit"] {
+            display: block;
+            width: 100%;
+            background: var(--ink);
+            color: var(--cream);
+            border: none;
+            border-radius: 3px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 16px;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+            margin-top: 8px;
+        }
+
+        .rsvp-form button[type="submit"]:hover {
+            opacity: 0.85;
+        }
+
+        .rsvp-form .form-note {
+            font-size: 0.78rem;
+            color: var(--ink-soft);
+            text-align: center;
+            margin-top: 16px;
+        }
+
+        .rsvp-success {
+            max-width: 520px;
+            margin: 50px auto 0;
+            text-align: center;
+            display: none;
+        }
+
+        .rsvp-success.visible {
+            display: block;
+        }
+
+        .rsvp-success .check {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.8rem;
+            color: var(--ink);
+            margin-bottom: 10px;
+        }
+
+        .rsvp-success p {
+            margin-bottom: 0;
+        }
+
+        /* --- PEU DE PÀGINA --- */
+        footer {
+            padding: 50px 20px;
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--ink-soft);
+            letter-spacing: 0.5px;
+        }
+
+        /* --- PÀGINES: UBICACIONS / ALLOTJAMENT --- */
+        .page-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 120px 20px 100px;
+            text-align: center;
+        }
+
+        .page-section .page-intro {
+            margin-bottom: 50px;
+        }
+
+        .location-card {
+            margin-bottom: 60px;
+            text-align: left;
+        }
+
+        .location-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .location-card .loc-titol {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: 1.7rem;
+            color: var(--ink);
+            margin-bottom: 4px;
+            text-align: center;
+        }
+
+        .location-card .loc-adreca {
+            font-size: 0.85rem;
+            color: var(--ink-soft);
+            text-align: center;
+            margin-bottom: 18px;
+            letter-spacing: 0.3px;
+        }
+
+        .location-card .map-frame {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .location-card .map-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        .location-card .map-link {
+            display: block;
+            text-align: center;
+            margin-top: 14px;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--ink);
+            text-decoration: none;
+            border-bottom: 1px solid var(--ink);
+            padding-bottom: 4px;
+        }
+
+        .location-card .map-link {
+            display: inline-block;
+        }
+
+        .location-card .map-link-wrap {
+            text-align: center;
+        }
+
+        .zone-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 40px;
+            margin-bottom: 70px;
+            text-align: left;
+        }
+
+        .zone-card .zone-titol {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--ink);
+            margin-bottom: 8px;
+        }
+
+        .zone-card p {
+            font-size: 0.88rem;
+            margin-bottom: 0;
+        }
+
+        .hotel-list {
+            text-align: left;
+            border-top: 1px solid var(--line);
+            padding-top: 40px;
+        }
+
+        .hotel-list h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 22px;
+            text-align: center;
+        }
+
+        .hotel-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .hotel-item:last-child {
+            border-bottom: none;
+        }
+
+        .hotel-item .hotel-nom {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        .hotel-item .hotel-estrelles {
+            font-size: 0.72rem;
+            letter-spacing: 1px;
+            color: var(--ink-soft);
+            margin-left: 6px;
+            white-space: nowrap;
+        }
+
+        .hotel-item .hotel-nom a {
+            color: var(--ink);
+            text-decoration: underline;
+        }
+
+        .hotel-item .hotel-nom a:hover {
+            color: var(--ink-soft);
+        }
+
+        .hotel-item .hotel-zona {
+            font-size: 0.82rem;
+            color: var(--ink-soft);
+        }
+
+        .hotel-item .hotel-preu {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--ink-soft);
+            flex-shrink: 0;
+        }
+
+        /* --- ADAPTACIÓ MÒBIL --- */
+        @media (max-width: 600px) {
+            .hero .names { font-size: 2.5rem; }
+            .hero .data { font-size: 1.3rem; letter-spacing: 2px; }
+            h2 { font-size: 2rem; }
+            .container, .rsvp-section { padding: 70px 20px; }
+            .fotos-separadores {
+                gap: 12px;
+                padding: 5px 18px 45px;
+            }
+            .foto-separador {
+                width: calc(50vw - 30px);
+                max-width: 190px;
+                padding: 7px;
+            }
+            /* "top" es manté igual en tots dos estats (pinned i no pinned) perquè el
+               desplaçament en fixar-se sigui estrictament horitzontal. El "font-size"
+               tampoc canvia, per mantenir la mateixa mida de lletra abans i després. */
+            .lang-switch { top: 14px; right: 18px; font-size: 0.72rem; }
+            /* Barra de fons més alta perquè hi càpiguen les dues files (idioma + pestanyes)
+               un cop es fixen, sempre centrades i sense solapar-se. */
+            .fixed-header {
+                height: auto;
+                min-height: 70px;
+            }
+            /* En fixar-se, el selector d'idioma "arrossega" des de la cantonada dreta
+               (posició normal en mòbil) fins al centre de la primera fila del header fix.
+               Utilitzem "right: 50%" + "translateX(50%)" (en lloc de "left") perquè
+               "right" es pugui interpolar de manera contínua durant la transició,
+               generant un moviment purament horitzontal (sense "top" ni "left" de per mig). */
+            .lang-switch.pinned {
+                right: 50%;
+                transform: translateX(50%);
+            }
+            /* Les pestanyes pugen des de la seva posició original fins a la segona fila
+               del header fix; el punt de fixació (top) coincideix amb on haurien arribat
+               per scroll normal, així que no hi ha cap salt en fixar-se. */
+            /* Ni el "gap" ni la mida de lletra dels botons canvien respecte a l'estat
+               original (definits més avall a ".tabs" i ".tabs button"): només es
+               desplaça la posició vertical, perquè en fixar-se no s'aprecïi cap canvi
+               de mida ni de maquetació, únicament el "salt" a la nova posició.
+               S'ha augmentat de 34px a 40px per deixar més aire respecte al selector
+               d'idioma (que queda fixat a top:14px). */
+            .tabs.pinned {
+                top: 40px;
+            }
+            .countdown { gap: 16px; margin-top: 26px; }
+            .countdown .unit { min-width: 42px; }
+            .countdown .num { font-size: 1.6rem; }
+            .countdown .label { font-size: 0.55rem; letter-spacing: 1.5px; }
+            .countdown .colon { font-size: 1.4rem; }
+            .tabs { gap: 22px; margin-top: 48px; }
+            .tabs button { font-size: 0.68rem; letter-spacing: 1.5px; }
+            .timeline { margin-top: 38px; }
+            .timeline::before { left: 58px; }
+            .timeline-item { padding-bottom: 30px; }
+            .timeline-item .hora { width: 42px; font-size: 1.05rem; }
+            .timeline-item .punt { left: 58px; }
+            .timeline-item .text { font-size: 0.88rem; padding-left: 28px; }
+            .timeline-item .text.nowrap-line { white-space: normal; }
+            .zone-grid { grid-template-columns: 1fr; gap: 22px; }
+            .page-section { padding: 100px 20px 70px; }
+            .hotel-item { flex-direction: column; align-items: flex-start; gap: 2px; }
+            .faq-question { font-size: 1.05rem; }
+            .faq-answer p { font-size: 0.88rem; }
+        }
+    
+
+
+        /* --- PANTALLA DE CONTRASENYA --- */
+        #password-gate {
+            position: fixed;
+            inset: 0;
+            background: var(--cream);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 24px;
+            z-index: 1000;
+        }
+
+        #password-gate .gate-names {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: 2.4rem;
+            color: var(--ink);
+            margin-bottom: 14px;
+        }
+
+        #password-gate .gate-msg {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.92rem;
+            color: var(--ink-soft);
+            margin-bottom: 30px;
+            max-width: 360px;
+        }
+
+        #password-gate form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        #password-gate input[type="password"] {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            text-align: center;
+            background: none;
+            border: none;
+            border-bottom: 1px solid var(--line);
+            color: var(--ink);
+            padding: 8px 4px;
+            width: 220px;
+            outline: none;
+            transition: border-color 0.25s ease;
+        }
+
+        #password-gate input[type="password"]:focus {
+            border-color: var(--ink);
+        }
+
+        #password-gate button[type="submit"] {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--ink);
+            padding: 0 0 6px;
+            border-bottom: 1px solid var(--ink);
+            transition: opacity 0.2s ease;
+        }
+
+        #password-gate button[type="submit"]:hover {
+            opacity: 0.65;
+        }
+
+        #password-gate .gate-error {
+            font-size: 0.8rem;
+            color: #a14b3e;
+            min-height: 1.2em;
+            margin-top: -4px;
+        }
+    
