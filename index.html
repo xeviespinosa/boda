@@ -1,15 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Belén & Xevi · El nostre casament</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Belén &amp; Xevi · El nostre casament</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Montserrat:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
+<style>
         /* --- ESTILS GENERALS (RESET) --- */
         * {
             margin: 0;
@@ -1044,8 +1043,7 @@
             .faq-answer p { font-size: 0.88rem; }
         }
     </style>
-
-    <style>
+<style>
         /* --- PANTALLA DE CONTRASENYA --- */
         #password-gate {
             position: fixed;
@@ -1130,348 +1128,313 @@
     </style>
 </head>
 <body>
-
-    <div id="password-gate">
-        <p class="gate-names">Belén &amp; Xevi</p>
-        <p class="gate-msg" id="gate-msg">Introduce la contraseña que encontrarás en la invitación para acceder a la página.</p>
-        <form id="gate-form" autocomplete="off">
-            <input type="password" id="gate-input" placeholder="Contraseña" autocomplete="off">
-            <p class="gate-error" id="gate-error"></p>
-            <button type="submit" id="gate-submit">Entrar</button>
-        </form>
-    </div>
-
-    <div id="site-content" style="display:none;">
-
-    <header class="fixed-header" id="fixed-header"></header>
-
-    <div class="lang-switch">
-        <button type="button" id="btn-cat" onclick="setLang('ca')">CAT</button>
-        <span class="sep">/</span>
-        <button type="button" id="btn-esp" onclick="setLang('es')">ESP</button>
-    </div>
-
-    <section class="hero">
-        <h1 class="names" data-i18n="names_title">Belén i Xevi</h1>
-        <div class="divider"></div>
-        <p class="data">19 · 06 · 2027</p>
-        <p class="lloc">Málaga</p>
-
-        <div class="countdown" id="countdown">
-            <div class="unit">
-                <span class="num" id="cd-days">00</span>
-                <span class="label" data-i18n="cd_days">Dies</span>
-            </div>
-            <span class="colon">:</span>
-            <div class="unit">
-                <span class="num" id="cd-hours">00</span>
-                <span class="label" data-i18n="cd_hours">Hores</span>
-            </div>
-            <span class="colon">:</span>
-            <div class="unit">
-                <span class="num" id="cd-minutes">00</span>
-                <span class="label" data-i18n="cd_minutes">Minuts</span>
-            </div>
-            <span class="colon">:</span>
-            <div class="unit">
-                <span class="num" id="cd-seconds">00</span>
-                <span class="label" data-i18n="cd_seconds">Segons</span>
-            </div>
-        </div>
-
-        <div class="tabs">
-            <button type="button" data-page="home" data-i18n="menu_home" onclick="goToPage('home')">Inici</button>
-            <button type="button" data-page="ubicaciones" data-i18n="menu_ubicaciones" onclick="goToPage('ubicaciones')">Ubicacions</button>
-            <button type="button" data-page="alojamiento" data-i18n="menu_alojamiento" onclick="goToPage('alojamiento')">On allotjar-se</button>
-        </div>
-
-        <div class="scroll-hint" aria-hidden="true">
-            <svg viewBox="0 0 16 26" xmlns="http://www.w3.org/2000/svg">
-                <line x1="8" y1="0" x2="8" y2="20" stroke="currentColor" stroke-width="1.4" style="color: var(--ink);" />
-                <polyline points="2,15 8,21 14,15" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="color: var(--ink);" />
-            </svg>
-        </div>
-    </section>
-
-    <div id="view-home">
-
-    <section id="detalls" class="container">
-        <h2 data-i18n="detalls_titol">Ens casem!</h2>
-        <p data-i18n="detalls_text">Fa molt de temps que caminem junts, pero ara ha arribat el moment de fer el gran pas. Ens faria una il·lusió immensa que ens acompanyéssiu en aquest dia tan especial per a nosaltres.</p>
-        <div class="detalls-foto">
-            <img src="fotos/nosotros.jpg" alt="Belén i Xevi" loading="lazy">
-        </div>
-        <hr>
-    </section>
-
-    <section id="programa" class="programa-section">
-        <h2 data-i18n="programa_titol">Programa del dia</h2>
-        <p data-i18n="programa_text">Aquest és l'horari previst per al gran dia. T'hi esperem!</p>
-
-
-        <div class="timeline">
-            <div class="timeline-item">
-                <span class="hora">18:00</span>
-                <span class="punt"></span>
-                <span class="text" data-i18n="prog_1"><strong>Cerimònia</strong> al <span class="loc-link" onclick="goToLocation('loc-santuario')">Santuari de la Victòria de Màlaga</span></span>
-            </div>
-            <div class="timeline-item">
-                <span class="hora">19:00</span>
-                <span class="punt"></span>
-                <span class="text nowrap-line" data-i18n="prog_2"><strong>Trasllat</strong> dels convidats a la finca <span class="loc-link" onclick="goToLocation('loc-hacienda')">Hacienda del Álamo</span></span>
-            </div>
-            <div class="timeline-item">
-                <span class="hora">20:00</span>
-                <span class="punt"></span>
-                <span class="text" data-i18n="prog_3"><strong>Còctel</strong> de benvinguda</span>
-            </div>
-            <div class="timeline-item">
-                <span class="hora">21:30</span>
-                <span class="punt"></span>
-                <span class="text" data-i18n="prog_4"><strong>Sopar</strong></span>
-            </div>
-            <div class="timeline-item">
-                <span class="hora">23:00</span>
-                <span class="punt"></span>
-                <span class="text" data-i18n="prog_5"><strong>Festa!</strong></span>
-            </div>
-        </div>
-    </section>
-
-    <div class="fotos-separadores" aria-label="Fotografies de Belén i Xevi">
-        <div class="foto-separador">
-            <img src="fotos/separador_1.jpg" alt="Belén i Xevi" loading="lazy">
-        </div>
-        <div class="foto-separador">
-            <img src="fotos/separador_2.jpg" alt="Belén i Xevi" loading="lazy">
-        </div>
-    </div>
-
-    <section id="faq" class="faq-section">
-        <h2 data-i18n="faq_titol">Informació pràctica</h2>
-        <p data-i18n="faq_text">Algunes preguntes habituals que us poden ser útils.</p>
-
-        <div class="faq-list">
-            <div class="faq-item">
-                <button type="button" class="faq-question" onclick="toggleFaq(this)">
-                    <span data-i18n="faq_q1">Com arribar a l'església?</span>
-                    <span class="faq-icon"></span>
-                </button>
-                <div class="faq-answer">
-                    <div data-i18n="faq_a1"><p>Si l'allotjament està a prop del santuari, recomanem anar-hi caminant. Si no, en transport públic, taxi o algun altre servei (Uber, Cabify, Bolt, etc).</p><p>El cotxe particular és una opció, però és difícil aparcar per la zona.</p></div>
-                </div>
-            </div>
-            <div class="faq-item">
-                <button type="button" class="faq-question" onclick="toggleFaq(this)">
-                    <span data-i18n="faq_q2">Com anar de l'església a la finca?</span>
-                    <span class="faq-icon"></span>
-                </button>
-                <div class="faq-answer">
-                    <div data-i18n="faq_a2"><p>Hi haurà service d'autobús que sortirà un cop acabada la cerimònia.</p><p>També es pot anar amb cotxe particular i aparcar a la finca, on hi ha una zona de parking habilitada.</p></div>
-                </div>
-            </div>
-            <div class="faq-item">
-                <button type="button" class="faq-question" onclick="toggleFaq(this)">
-                    <span data-i18n="faq_q_bus">Hi haurà autobús després de la festa?</span>
-                    <span class="faq-icon"></span>
-                </button>
-                <div class="faq-answer">
-                    <div data-i18n="faq_a_bus"><p>Sí! Habrá servicio de autobús una vez finalizada la fiesta, que irá de la finca al centro.</p><p>Si sois un grupo de gente que se aloja lejos del centro, hablad con los novios para ver si es posible añadir una parada extra del autobús en esa ubicación.</p></div>
-                </div>
-            </div>
-            <div class="faq-item">
-                <button type="button" class="faq-question" onclick="toggleFaq(this)">
-                    <span data-i18n="faq_q3">Puc anar amb acompanyant o fills/es?</span>
-                    <span class="faq-icon"></span>
-                </button>
-                <div class="faq-answer">
-                    <div data-i18n="faq_a3"><p>Per descomptat! Tothom és benvingut al nostre casament.</p><p>Recordeu apuntar-los al formulari d'inscripció.</p></div>
-                </div>
-            </div>
-            <div class="faq-item">
-                <button type="button" class="faq-question" onclick="toggleFaq(this)">
-                    <span data-i18n="faq_q4">Hi ha codi de vestimenta?</span>
-                    <span class="faq-icon"></span>
-                </button>
-                <div class="faq-answer">
-                    <div data-i18n="faq_a4"><p>Animem tots els convidats a anar elegants i còmodes alhora.</p><p>Per a la festa, recomanem portar un calçat de recanvi que sigui més còmode per aguantar el màxim de temps possible.</p></div>
-                </div>
-            </div>
-            <div class="faq-item">
-                <button type="button" class="faq-question" onclick="toggleFaq(this)">
-                    <span data-i18n="faq_q5">I si volem fer un regal?</span>
-                    <span class="faq-icon"></span>
-                </button>
-                <div class="faq-answer">
-                    <div data-i18n="faq_a5"><p>El millor regal és compartir el dia amb vosaltres.</p><p>Si a més voleu fer una aportació, ens seria de gran ajuda per a la nostra lluna de mel:</p><p>IBAN: ES80 1583 0001 1791 4883 1300</p></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="rsvp" class="rsvp-section">
-        <h2 data-i18n="rsvp_titol">Confirmació d'assistència</h2>
-        <p data-i18n="rsvp_text">Si us plau, confirma la teva assistència abans de l'1 de Juny.</p>
-
-        <form class="rsvp-form" id="rsvp-form" name="rsvp" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-            <input type="hidden" name="form-name" value="rsvp">
-            <p style="display:none;">
-                <label>No omplir: <input name="bot-field"></label>
-            </p>
-
-            <div class="field">
-                <label for="f-nombre" data-i18n="rsvp_f_nombre">Nom complet</label>
-                <input type="text" id="f-nombre" name="Nombre completo" required>
-            </div>
-
-            <div class="field">
-                <label data-i18n="rsvp_f_asistencia">Hi assistiràs?</label>
-                <div class="radio-group">
-                    <div class="radio-option">
-                        <input type="radio" id="f-asis-si" name="Asistencia" value="Sí" required>
-                        <label for="f-asis-si" data-i18n="rsvp_si">Sí</label>
-                    </div>
-                    <div class="radio-option">
-                        <input type="radio" id="f-asis-no" name="Asistencia" value="No">
-                        <label for="f-asis-no" data-i18n="rsvp_no">No</label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="field">
-                <label data-i18n="rsvp_f_acomp">Vindràs amb acompanyant i/o fills/es?</label>
-                <div class="radio-group">
-                    <div class="radio-option">
-                        <input type="radio" id="f-acomp-si" name="Acompañantes" value="Sí" onchange="toggleAcompanantes(true)">
-                        <label for="f-acomp-si" data-i18n="rsvp_si">Sí</label>
-                    </div>
-                    <div class="radio-option">
-                        <input type="radio" id="f-acomp-no" name="Acompañantes" value="No" onchange="toggleAcompanantes(false)">
-                        <label for="f-acomp-no" data-i18n="rsvp_no">No</label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="conditional" id="acomp-detail">
-                <div class="field">
-                    <label for="f-acomp-nombres" data-i18n="rsvp_f_acomp_nombres">Noms dels acompanyants</label>
-                    <span class="hint" data-i18n="rsvp_f_acomp_hint">Indica'ns també l'edat si són menors</span>
-                    <textarea id="f-acomp-nombres" name="Nombres acompañantes y edades"></textarea>
-                </div>
-            </div>
-
-            <div class="field">
-                <label for="f-alergias" data-i18n="rsvp_f_alergias">Al·lèrgies, intoleràncies o restriccions alimentàries</label>
-                <textarea id="f-alergias" name="Alergias"></textarea>
-            </div>
-
-            <div class="field">
-                <label for="f-cancion" data-i18n="rsvp_f_cancion">Una cançó que no pot faltar a la festa</label>
-                <input type="text" id="f-cancion" name="Canción">
-            </div>
-
-            <button type="submit" data-i18n="rsvp_enviar">Enviar</button>
-            <p class="form-note" data-i18n="rsvp_note">Podràs tornar a enviar el formulari si necessites corregir alguna dada.</p>
-        </form>
-
-        <div class="rsvp-success" id="rsvp-success">
-            <p class="check">✓</p>
-            <p data-i18n="rsvp_success">Gràcies! Hem rebut la teva confirmació.</p>
-        </div>
-    </section>
-
-    <footer>
-        <p data-i18n="footer_text">Creat amb ♥</p>
-    </footer>
-
-    </div>
-
-    <div id="view-ubicaciones" style="display:none;">
-        <section class="page-section">
-            <h2 data-i18n="ubic_titol">Ubicacions</h2>
-            <p class="page-intro" data-i18n="ubic_text">Aquí trobaràs les dues ubicacions del gran dia: la cerimònia i el banquet.</p>
-
-            <div class="location-card" id="loc-santuario">
-                <p class="loc-titol" data-i18n="ubic_santuario_titol">Cerimònia · Santuari de la Victòria</p>
-                <p class="loc-adreca">Plaza del Santuario, s/n, 29013 Málaga</p>
-                <div class="map-frame">
-                    <iframe src="https://www.google.com/maps?q=Santuario+de+la+Victoria,+Plaza+del+Santuario,+Málaga&output=embed" loading="lazy"></iframe>
-                </div>
-                <div class="map-link-wrap">
-                    <a class="map-link" data-i18n="ubic_abrir_maps" href="https://maps.google.com/?q=Santuario+de+la+Victoria,+Plaza+del+Santuario,+s/n,+29013+Málaga" target="_blank" rel="noopener">Obrir a Google Maps</a>
-                </div>
-            </div>
-
-            <div class="location-card" id="loc-hacienda">
-                <p class="loc-titol" data-i18n="ubic_hacienda_titol">Banquet · Hacienda del Álamo</p>
-                <p class="loc-adreca">Camino de Casabermeja, 130, 29014 Málaga</p>
-                <div class="map-frame">
-                    <iframe src="https://www.google.com/maps?q=Hacienda+del+Alamo,+Camino+de+Casabermeja+130,+Málaga&output=embed" loading="lazy"></iframe>
-                </div>
-                <div class="map-link-wrap">
-                    <a class="map-link" data-i18n="ubic_abrir_maps" href="https://maps.google.com/?q=Hacienda+del+Álamo,+Camino+de+Casabermeja,+130,+29014+Málaga" target="_blank" rel="noopener">Obrir a Google Maps</a>
-                </div>
-            </div>
-
-            <div class="location-card">
-                <p class="loc-titol" data-i18n="ubic_preboda_titol">Pre-boda · Restaurante Molabassa</p>
-                <p class="loc-adreca">Paseo Marítimo el Pedregal, 22, 29017 Málaga (Pedregalejo)</p>
-                <div class="map-frame">
-                    <iframe src="https://www.google.com/maps?q=Restaurante+Molabassa,+Paseo+Marítimo+el+Pedregal+22,+Pedregalejo,+Málaga&output=embed" loading="lazy"></iframe>
-                </div>
-                <div class="map-link-wrap">
-                    <a class="map-link" data-i18n="ubic_abrir_maps" href="https://maps.google.com/?q=Restaurante+Molabassa,+Paseo+Marítimo+el+Pedregal,+22,+29017+Málaga" target="_blank" rel="noopener">Obrir a Google Maps</a>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <div id="view-alojamiento" style="display:none;">
-        <section class="page-section">
-            <h2 data-i18n="aloj_titol">On allotjar-se</h2>
-            <p class="page-intro" data-i18n="aloj_text">Si véns de fora de Màlaga, aquí tens algunes recomanacions de zones i hotels per triar allotjament.</p>
-            <p class="page-intro" data-i18n="aloj_apartamentos">Per a grups i famílies, recomanem llogar apartaments turístics en aquestes zones recomanades.</p>
-
-            <div class="zone-grid">
-                <div class="zone-card">
-                    <p class="zone-titol" data-i18n="zona_centro_titol">Centre · Carrer Larios</p>
-                    <p data-i18n="zona_centro_text">La zona més cèntrica i amb encant, a prop de la Catedral i a deu minuts de la finca en cotxe.</p>
-                </div>
-                <div class="zone-card">
-                    <p class="zone-titol" data-i18n="zona_soho_titol">El Soho</p>
-                    <p data-i18n="zona_soho_text">Barri modern i artístic, tocant al centre històric i a la zona del port, amb ambient jove.</p>
-                </div>
-                <div class="zone-card">
-                    <p class="zone-titol" data-i18n="zona_malagueta_titol">La Malagueta</p>
-                    <p data-i18n="zona_malagueta_text">Vora la platja i a deu minuts a peu del centre històric, una opció més tranquil·la.</p>
-                </div>
-                <div class="zone-card">
-                    <p class="zone-titol" data-i18n="zona_huelin_titol">Huelin</p>
-                    <p data-i18n="zona_huelin_text">Allunyada del centre, però molt a prop de la platja. Sol sortir més econòmica.</p>
-                </div>
-                <div class="zone-card">
-                    <p class="zone-titol" data-i18n="zona_pedregalejo_titol">Pedregalejo</p>
-                    <p data-i18n="zona_pedregalejo_text">Allunyada del centre, però molt a prop de la platja i del restaurant de la pre-boda. Sol sortir més econòmica.</p>
-                </div>
-            </div>
-            <div class="hotel-accordion hotel-offers faq-item">
-                <button type="button" class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-                    <span data-i18n="hotel_offers_titol">Ofertes d'hotels</span>
-                    <span class="faq-icon" aria-hidden="true"></span>
-                </button>
-                <div class="faq-answer"><div data-i18n="hotel_offers_content"><div class="hotel-offer-item"><div class="hotel-offer-name"><a href="https://maps.google.com/?q=AC+Hotel+M%C3%A1laga+Palacio" target="_blank" rel="noopener">AC Hotel Málaga Palacio</a></div><div class="hotel-offer-text">Habitació estàndard per 219 € per nit, esmorzar i IVA no inclosos. Cup de 20 habitacions per a entrada el 18 i sortida el 20 de juny de 2027. Reserves fins al 18 de maig de 2027 i garantia mitjançant targeta de crèdit.</div></div><div class="hotel-offer-item"><div class="hotel-offer-name"><a href="https://maps.google.com/?q=Hotel+Guadalmedina" target="_blank" rel="noopener">Hotel Guadalmedina</a></div><div class="hotel-offer-text">Descompte del 13 % en registrar-se com a membre al web oficial i un 5 % addicional mitjançant el codi <code>WEDDING</code>.</div></div><div class="hotel-offer-item"><div class="hotel-offer-name">Hotels Petit Palace de Màlaga</div><div class="hotel-offer-text">10 % de descompte amb el codi <code>BODABELENXEVI</code>, més un 10 % addicional en registrar-se a Tripster. Codi disponible del 18 al 20 de juny de 2027, amb reserves subjectes a disponibilitat als hotels següents:</div><div class="hotel-offer-hotels"><a href="https://maps.google.com/?q=Icon+Malabar" target="_blank" rel="noopener">Icon Malabar</a><a href="https://maps.google.com/?q=Petit+Palace+Plaza+M%C3%A1laga" target="_blank" rel="noopener">Petit Palace Plaza Málaga</a><a href="https://maps.google.com/?q=Petit+Palace+La+Hermosa" target="_blank" rel="noopener">Petit Palace La Hermosa</a><a href="https://maps.google.com/?q=Petit+Palace+La+Equitativa" target="_blank" rel="noopener">Petit Palace La Equitativa</a><a href="https://maps.google.com/?q=Petit+Palace+Las+Vegas" target="_blank" rel="noopener">Petit Palace Las Vegas</a></div></div><div class="hotel-offer-item"><div class="hotel-offer-name">Soho Boutique Hotels</div><div class="hotel-offer-text">20 % de descompte sobre la tarifa flexible vigent, no acumulable amb altres descomptes. La reserva s'ha de sol·licitar escrivint a <code>info@sohohoteles.com</code>, indicant «A l'atenció de Verónica», la referència del casament, l'hotel, els hostes, l'habitació, les dates i el règim. S'exigeix prepagament, amb cancel·lació gratuïta fins a cinc dies abans de l'arribada. Les habitacions estan subjectes a disponibilitat. L'oferta cobreix els hotels:</div><div class="hotel-offer-hotels"><a href="https://maps.google.com/?q=Soho+Bah%C3%ADa+M%C3%A1laga" target="_blank" rel="noopener">Soho Bahía Málaga</a><a href="https://maps.google.com/?q=Soho+Malaga" target="_blank" rel="noopener">Soho Malaga</a><a href="https://maps.google.com/?q=Soho+Urban" target="_blank" rel="noopener">Soho Urban</a><a href="https://maps.google.com/?q=Soho+Los+Naranjos" target="_blank" rel="noopener">Soho Los Naranjos</a><a href="https://maps.google.com/?q=Apartamentos+Soho+Museo" target="_blank" rel="noopener">Apartamentos Soho Museo</a></div></div></div></div>
-            </div>
-            <div class="hotel-accordion hotel-recommendations faq-item">
-                <button type="button" class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-                    <span data-i18n="hotel_list_titol">Altres recomanacions</span>
-                    <span class="faq-icon" aria-hidden="true"></span>
-                </button>
-                <div class="faq-answer"><div class="hotel-recommendations-content"><div class="hotel-item"><div><div class="hotel-nom"><a href="https://maps.google.com/?q=AC+Hotel+M%C3%A1laga+Palacio" target="_blank" rel="noopener">AC Hotel Málaga Palacio</a><span class="hotel-estrelles">★★★★</span></div><div class="hotel-zona" data-i18n="hotel_palacio_zona"></div></div><div class="hotel-preu">€€€</div></div><div class="hotel-item"><div><div class="hotel-nom"><a href="https://maps.google.com/?q=Palacio+Solecio+M%C3%A1laga" target="_blank" rel="noopener">Palacio Solecio</a><span class="hotel-estrelles">★★★★</span></div><div class="hotel-zona" data-i18n="hotel_solecio_zona"></div></div><div class="hotel-preu">€€€€</div></div><div class="hotel-item"><div><div class="hotel-nom"><a href="https://maps.google.com/?q=Petit+Palace+La+Equitativa+M%C3%A1laga" target="_blank" rel="noopener">Petit Palace La Equitativa</a><span class="hotel-estrelles">★★★★</span></div><div class="hotel-zona" data-i18n="hotel_equitativa_zona"></div></div><div class="hotel-preu">€€</div></div><div class="hotel-item"><div><div class="hotel-nom"><a href="https://maps.google.com/?q=Petit+Palace+La+Hermosa+M%C3%A1laga" target="_blank" rel="noopener">Petit Palace La Hermosa</a><span class="hotel-estrelles">★★★★</span></div><div class="hotel-zona" data-i18n="hotel_colon_zona"></div></div><div class="hotel-preu">€€</div></div><div class="hotel-item"><div><div class="hotel-nom"><a href="https://maps.google.com/?q=%C3%81urea+Palacio+de+la+Tinta+M%C3%A1laga" target="_blank" rel="noopener">Áurea Palacio de la Tinta</a><span class="hotel-estrelles">★★★★★</span></div><div class="hotel-zona" data-i18n="hotel_tinta_zona"></div></div><div class="hotel-preu">€€€</div></div><div class="hotel-item"><div><div class="hotel-nom"><a href="https://maps.google.com/?q=Gran+Hotel+Miramar+M%C3%A1laga" target="_blank" rel="noopener">Gran Hotel Miramar</a><span class="hotel-estrelles">★★★★★</span></div><div class="hotel-zona" data-i18n="hotel_miramar_zona"></div></div><div class="hotel-preu">€€€€</div></div><div class="hotel-item"><div><div class="hotel-nom"><a href="https://maps.app.goo.gl/drEbE7zbdRTJgsY7A" target="_blank" rel="noopener noreferrer">ME Málaga by Meliá</a><span class="hotel-estrelles">★★★★★</span></div><div class="hotel-zona" data-i18n="hotel_me_zona"></div></div><div class="hotel-preu">€€€€</div></div></div></div>
-            </div>
-        </section>
-    </div>
-
-    <script>
+<div id="password-gate">
+<p class="gate-names">Belén &amp; Xevi</p>
+<p class="gate-msg" id="gate-msg">Introduce la contraseña que encontrarás en la invitación para acceder a la página.</p>
+<form autocomplete="off" id="gate-form">
+<input autocomplete="off" id="gate-input" placeholder="Contraseña" type="password"/>
+<p class="gate-error" id="gate-error"></p>
+<button id="gate-submit" type="submit">Entrar</button>
+</form>
+</div>
+<div id="site-content" style="display:none;">
+<header class="fixed-header" id="fixed-header"></header>
+<div class="lang-switch">
+<button id="btn-cat" onclick="setLang('ca')" type="button">CAT</button>
+<span class="sep">/</span>
+<button id="btn-esp" onclick="setLang('es')" type="button">ESP</button>
+</div>
+<section class="hero">
+<h1 class="names" data-i18n="names_title">Belén i Xevi</h1>
+<div class="divider"></div>
+<p class="data">19 · 06 · 2027</p>
+<p class="lloc">Málaga</p>
+<div class="countdown" id="countdown">
+<div class="unit">
+<span class="num" id="cd-days">00</span>
+<span class="label" data-i18n="cd_days">Dies</span>
+</div>
+<span class="colon">:</span>
+<div class="unit">
+<span class="num" id="cd-hours">00</span>
+<span class="label" data-i18n="cd_hours">Hores</span>
+</div>
+<span class="colon">:</span>
+<div class="unit">
+<span class="num" id="cd-minutes">00</span>
+<span class="label" data-i18n="cd_minutes">Minuts</span>
+</div>
+<span class="colon">:</span>
+<div class="unit">
+<span class="num" id="cd-seconds">00</span>
+<span class="label" data-i18n="cd_seconds">Segons</span>
+</div>
+</div>
+<div class="tabs">
+<button data-i18n="menu_home" data-page="home" onclick="goToPage('home')" type="button">Inici</button>
+<button data-i18n="menu_ubicaciones" data-page="ubicaciones" onclick="goToPage('ubicaciones')" type="button">Ubicacions</button>
+<button data-i18n="menu_alojamiento" data-page="alojamiento" onclick="goToPage('alojamiento')" type="button">On allotjar-se</button>
+</div>
+<div aria-hidden="true" class="scroll-hint">
+<svg viewbox="0 0 16 26" xmlns="http://www.w3.org/2000/svg">
+<line stroke="currentColor" stroke-width="1.4" style="color: var(--ink);" x1="8" x2="8" y1="0" y2="20"></line>
+<polyline fill="none" points="2,15 8,21 14,15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" style="color: var(--ink);"></polyline>
+</svg>
+</div>
+</section>
+<div id="view-home">
+<section class="container" id="detalls">
+<h2 data-i18n="detalls_titol">Ens casem!</h2>
+<p data-i18n="detalls_text">Fa molt de temps que caminem junts, pero ara ha arribat el moment de fer el gran pas. Ens faria una il·lusió immensa que ens acompanyéssiu en aquest dia tan especial per a nosaltres.</p>
+<div class="detalls-foto">
+<img alt="Belén i Xevi" loading="lazy" src="fotos/nosotros.jpg"/>
+</div>
+<hr/>
+</section>
+<section class="programa-section" id="programa">
+<h2 data-i18n="programa_titol">Programa del dia</h2>
+<p data-i18n="programa_text">Aquest és l'horari previst per al gran dia. T'hi esperem!</p>
+<div class="timeline">
+<div class="timeline-item">
+<span class="hora">18:00</span>
+<span class="punt"></span>
+<span class="text" data-i18n="prog_1"><strong>Cerimònia</strong> al <span class="loc-link" onclick="goToLocation('loc-santuario')">Santuari de la Victòria de Màlaga</span></span>
+</div>
+<div class="timeline-item">
+<span class="hora">19:00</span>
+<span class="punt"></span>
+<span class="text nowrap-line" data-i18n="prog_2"><strong>Trasllat</strong> dels convidats a la finca <span class="loc-link" onclick="goToLocation('loc-hacienda')">Hacienda del Álamo</span></span>
+</div>
+<div class="timeline-item">
+<span class="hora">20:00</span>
+<span class="punt"></span>
+<span class="text" data-i18n="prog_3"><strong>Còctel</strong> de benvinguda</span>
+</div>
+<div class="timeline-item">
+<span class="hora">21:30</span>
+<span class="punt"></span>
+<span class="text" data-i18n="prog_4"><strong>Sopar</strong></span>
+</div>
+<div class="timeline-item">
+<span class="hora">23:00</span>
+<span class="punt"></span>
+<span class="text" data-i18n="prog_5"><strong>Festa!</strong></span>
+</div>
+</div>
+</section>
+<div aria-label="Fotografies de Belén i Xevi" class="fotos-separadores">
+<div class="foto-separador">
+<img alt="Belén i Xevi" loading="lazy" src="fotos/separador_1.jpg"/>
+</div>
+<div class="foto-separador">
+<img alt="Belén i Xevi" loading="lazy" src="fotos/separador_2.jpg"/>
+</div>
+</div>
+<section class="faq-section" id="faq">
+<h2 data-i18n="faq_titol">Informació pràctica</h2>
+<p data-i18n="faq_text">Algunes preguntes habituals que us poden ser útils.</p>
+<div class="faq-list">
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)" type="button">
+<span data-i18n="faq_q1">Com arribar a l'església?</span>
+<span class="faq-icon"></span>
+</button>
+<div class="faq-answer">
+<div data-i18n="faq_a1"><p>Si l'allotjament està a prop del santuari, recomanem anar-hi caminant. Si no, en transport públic, taxi o algun altre servei (Uber, Cabify, Bolt, etc).</p><p>El cotxe particular és una opció, però és difícil aparcar per la zona.</p></div>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)" type="button">
+<span data-i18n="faq_q2">Com anar de l'església a la finca?</span>
+<span class="faq-icon"></span>
+</button>
+<div class="faq-answer">
+<div data-i18n="faq_a2"><p>Hi haurà service d'autobús que sortirà un cop acabada la cerimònia.</p><p>També es pot anar amb cotxe particular i aparcar a la finca, on hi ha una zona de parking habilitada.</p></div>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)" type="button">
+<span data-i18n="faq_q_bus">Hi haurà autobús després de la festa?</span>
+<span class="faq-icon"></span>
+</button>
+<div class="faq-answer">
+<div data-i18n="faq_a_bus"><p>Sí! Habrá servicio de autobús una vez finalizada la fiesta, que irá de la finca al centro.</p><p>Si sois un grupo de gente que se aloja lejos del centro, hablad con los novios para ver si es posible añadir una parada extra del autobús en esa ubicación.</p></div>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)" type="button">
+<span data-i18n="faq_q3">Puc anar amb acompanyant o fills/es?</span>
+<span class="faq-icon"></span>
+</button>
+<div class="faq-answer">
+<div data-i18n="faq_a3"><p>Per descomptat! Tothom és benvingut al nostre casament.</p><p>Recordeu apuntar-los al formulari d'inscripció.</p></div>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)" type="button">
+<span data-i18n="faq_q4">Hi ha codi de vestimenta?</span>
+<span class="faq-icon"></span>
+</button>
+<div class="faq-answer">
+<div data-i18n="faq_a4"><p>Animem tots els convidats a anar elegants i còmodes alhora.</p><p>Per a la festa, recomanem portar un calçat de recanvi que sigui més còmode per aguantar el màxim de temps possible.</p></div>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)" type="button">
+<span data-i18n="faq_q5">I si volem fer un regal?</span>
+<span class="faq-icon"></span>
+</button>
+<div class="faq-answer">
+<div data-i18n="faq_a5"><p>El millor regal és compartir el dia amb vosaltres.</p><p>Si a més voleu fer una aportació, ens seria de gran ajuda per a la nostra lluna de mel:</p><p>IBAN: ES80 1583 0001 1791 4883 1300</p></div>
+</div>
+</div>
+</div>
+</section>
+<section class="rsvp-section" id="rsvp">
+<h2 data-i18n="rsvp_titol">Confirmació d'assistència</h2>
+<p data-i18n="rsvp_text">Si us plau, confirma la teva assistència abans de l'1 de Juny.</p>
+<form class="rsvp-form" data-netlify="true" id="rsvp-form" method="POST" name="rsvp" netlify-honeypot="bot-field">
+<input name="form-name" type="hidden" value="rsvp"/>
+<p style="display:none;">
+<label>No omplir: <input name="bot-field"/></label>
+</p>
+<div class="field">
+<label data-i18n="rsvp_f_nombre" for="f-nombre">Nom complet</label>
+<input id="f-nombre" name="Nombre completo" required="" type="text"/>
+</div>
+<div class="field">
+<label data-i18n="rsvp_f_asistencia">Hi assistiràs?</label>
+<div class="radio-group">
+<div class="radio-option">
+<input id="f-asis-si" name="Asistencia" required="" type="radio" value="Sí"/>
+<label data-i18n="rsvp_si" for="f-asis-si">Sí</label>
+</div>
+<div class="radio-option">
+<input id="f-asis-no" name="Asistencia" type="radio" value="No"/>
+<label data-i18n="rsvp_no" for="f-asis-no">No</label>
+</div>
+</div>
+</div>
+<div class="field">
+<label data-i18n="rsvp_f_acomp">Vindràs amb acompanyant i/o fills/es?</label>
+<div class="radio-group">
+<div class="radio-option">
+<input id="f-acomp-si" name="Acompañantes" onchange="toggleAcompanantes(true)" type="radio" value="Sí"/>
+<label data-i18n="rsvp_si" for="f-acomp-si">Sí</label>
+</div>
+<div class="radio-option">
+<input id="f-acomp-no" name="Acompañantes" onchange="toggleAcompanantes(false)" type="radio" value="No"/>
+<label data-i18n="rsvp_no" for="f-acomp-no">No</label>
+</div>
+</div>
+</div>
+<div class="conditional" id="acomp-detail">
+<div class="field">
+<label data-i18n="rsvp_f_acomp_nombres" for="f-acomp-nombres">Noms dels acompanyants</label>
+<span class="hint" data-i18n="rsvp_f_acomp_hint">Indica'ns també l'edat si són menors</span>
+<textarea id="f-acomp-nombres" name="Nombres acompañantes y edades"></textarea>
+</div>
+</div>
+<div class="field">
+<label data-i18n="rsvp_f_alergias" for="f-alergias">Al·lèrgies, intoleràncies o restriccions alimentàries</label>
+<textarea id="f-alergias" name="Alergias"></textarea>
+</div>
+<div class="field">
+<label data-i18n="rsvp_f_cancion" for="f-cancion">Una cançó que no pot faltar a la festa</label>
+<input id="f-cancion" name="Canción" type="text"/>
+</div>
+<button data-i18n="rsvp_enviar" type="submit">Enviar</button>
+<p class="form-note" data-i18n="rsvp_note">Podràs tornar a enviar el formulari si necessites corregir alguna dada.</p>
+</form>
+<div class="rsvp-success" id="rsvp-success">
+<p class="check">✓</p>
+<p data-i18n="rsvp_success">Gràcies! Hem rebut la teva confirmació.</p>
+</div>
+</section>
+<footer>
+<p data-i18n="footer_text">Creat amb ♥</p>
+</footer>
+</div>
+<div id="view-ubicaciones" style="display:none;">
+<section class="page-section">
+<h2 data-i18n="ubic_titol">Ubicacions</h2>
+<p class="page-intro" data-i18n="ubic_text">Aquí trobaràs les dues ubicacions del gran dia: la cerimònia i el banquet.</p>
+<div class="location-card" id="loc-santuario">
+<p class="loc-titol" data-i18n="ubic_santuario_titol">Cerimònia · Santuari de la Victòria</p>
+<p class="loc-adreca">Plaza del Santuario, s/n, 29013 Málaga</p>
+<div class="map-frame">
+<iframe loading="lazy" src="https://www.google.com/maps?q=Santuario+de+la+Victoria,+Plaza+del+Santuario,+Málaga&amp;output=embed"></iframe>
+</div>
+<div class="map-link-wrap">
+<a class="map-link" data-i18n="ubic_abrir_maps" href="https://maps.google.com/?q=Santuario+de+la+Victoria,+Plaza+del+Santuario,+s/n,+29013+Málaga" rel="noopener" target="_blank">Obrir a Google Maps</a>
+</div>
+</div>
+<div class="location-card" id="loc-hacienda">
+<p class="loc-titol" data-i18n="ubic_hacienda_titol">Banquet · Hacienda del Álamo</p>
+<p class="loc-adreca">Camino de Casabermeja, 130, 29014 Málaga</p>
+<div class="map-frame">
+<iframe loading="lazy" src="https://www.google.com/maps?q=Hacienda+del+Alamo,+Camino+de+Casabermeja+130,+Málaga&amp;output=embed"></iframe>
+</div>
+<div class="map-link-wrap">
+<a class="map-link" data-i18n="ubic_abrir_maps" href="https://maps.google.com/?q=Hacienda+del+Álamo,+Camino+de+Casabermeja,+130,+29014+Málaga" rel="noopener" target="_blank">Obrir a Google Maps</a>
+</div>
+</div>
+<div class="location-card">
+<p class="loc-titol" data-i18n="ubic_preboda_titol">Pre-boda · Restaurante Molabassa</p>
+<p class="loc-adreca">Paseo Marítimo el Pedregal, 22, 29017 Málaga (Pedregalejo)</p>
+<div class="map-frame">
+<iframe loading="lazy" src="https://www.google.com/maps?q=Restaurante+Molabassa,+Paseo+Marítimo+el+Pedregal+22,+Pedregalejo,+Málaga&amp;output=embed"></iframe>
+</div>
+<div class="map-link-wrap">
+<a class="map-link" data-i18n="ubic_abrir_maps" href="https://maps.google.com/?q=Restaurante+Molabassa,+Paseo+Marítimo+el+Pedregal,+22,+29017+Málaga" rel="noopener" target="_blank">Obrir a Google Maps</a>
+</div>
+</div>
+</section>
+</div>
+<div id="view-alojamiento" style="display:none;">
+<section class="page-section">
+<h2 data-i18n="aloj_titol">On allotjar-se</h2>
+<p class="page-intro" data-i18n="aloj_text">Si véns de fora de Màlaga, aquí tens algunes recomanacions de zones i hotels per triar allotjament.</p>
+<p class="page-intro" data-i18n="aloj_apartamentos">Per a grups i famílies, recomanem llogar apartaments turístics en aquestes zones recomanades.</p>
+<div class="zone-grid">
+<div class="zone-card">
+<p class="zone-titol" data-i18n="zona_centro_titol">Centre · Carrer Larios</p>
+<p data-i18n="zona_centro_text">La zona més cèntrica i amb encant, a prop de la Catedral i a deu minuts de la finca en cotxe.</p>
+</div>
+<div class="zone-card">
+<p class="zone-titol" data-i18n="zona_soho_titol">El Soho</p>
+<p data-i18n="zona_soho_text">Barri modern i artístic, tocant al centre històric i a la zona del port, amb ambient jove.</p>
+</div>
+<div class="zone-card">
+<p class="zone-titol" data-i18n="zona_malagueta_titol">La Malagueta</p>
+<p data-i18n="zona_malagueta_text">Vora la platja i a deu minuts a peu del centre històric, una opció més tranquil·la.</p>
+</div>
+<div class="zone-card">
+<p class="zone-titol" data-i18n="zona_huelin_titol">Huelin</p>
+<p data-i18n="zona_huelin_text">Allunyada del centre, però molt a prop de la platja. Sol sortir més econòmica.</p>
+</div>
+<div class="zone-card">
+<p class="zone-titol" data-i18n="zona_pedregalejo_titol">Pedregalejo</p>
+<p data-i18n="zona_pedregalejo_text">Allunyada del centre, però molt a prop de la platja i del restaurant de la pre-boda. Sol sortir més econòmica.</p>
+</div>
+</div>
+<div class="hotel-accordion hotel-offers faq-item">
+<button aria-expanded="false" class="faq-question" onclick="toggleFaq(this)" type="button">
+<span data-i18n="hotel_offers_titol">Ofertes d'hotels</span>
+<span aria-hidden="true" class="faq-icon"></span>
+</button>
+<div class="faq-answer"><div data-i18n="hotel_offers_content"><div class="hotel-offer-item"><div class="hotel-offer-name">Soho Boutique Hotels</div><div class="hotel-offer-text">20 % de descompte sobre la tarifa flexible vigent, no acumulable amb altres descomptes. La reserva s'ha de sol·licitar escrivint a <code>info@sohohoteles.com</code>, indicant «A l'atenció de Verónica», la referència del casament, l'hotel, els hostes, l'habitació, les dates i el règim. S'exigeix prepagament, amb cancel·lació gratuïta fins a cinc dies abans de l'arribada. Les habitacions estan subjectes a disponibilitat. L'oferta cobreix els hotels:</div><div class="hotel-offer-hotels"><a href="https://maps.google.com/?q=Soho+Bah%C3%ADa+M%C3%A1laga" rel="noopener" target="_blank">Soho Bahía Málaga</a><a href="https://maps.google.com/?q=Soho+Malaga" rel="noopener" target="_blank">Soho Malaga</a><a href="https://maps.google.com/?q=Soho+Urban" rel="noopener" target="_blank">Soho Urban</a><a href="https://maps.google.com/?q=Soho+Los+Naranjos" rel="noopener" target="_blank">Soho Los Naranjos</a><a href="https://maps.google.com/?q=Apartamentos+Soho+Museo" rel="noopener" target="_blank">Apartamentos Soho Museo</a></div></div><div class="hotel-offer-item"><div class="hotel-offer-name">Hotels Petit Palace de Màlaga</div><div class="hotel-offer-text">10 % de descompte amb el codi <code>BODABELENXEVI</code>, més un 10 % addicional en registrar-se a Tripster. Codi disponible del 17 al 20 de juny de 2027, amb reserves subjectes a disponibilitat als hotels següents:</div><div class="hotel-offer-hotels"><a href="https://maps.google.com/?q=Icon+Malabar" rel="noopener" target="_blank">Icon Malabar</a><a href="https://maps.google.com/?q=Petit+Palace+Plaza+M%C3%A1laga" rel="noopener" target="_blank">Petit Palace Plaza Málaga</a><a href="https://maps.google.com/?q=Petit+Palace+La+Hermosa" rel="noopener" target="_blank">Petit Palace La Hermosa</a><a href="https://maps.google.com/?q=Petit+Palace+La+Equitativa" rel="noopener" target="_blank">Petit Palace La Equitativa</a><a href="https://maps.google.com/?q=Petit+Palace+Las+Vegas" rel="noopener" target="_blank">Petit Palace Las Vegas</a></div></div><div class="hotel-offer-item"><div class="hotel-offer-name"><a href="https://maps.google.com/?q=Hotel+Guadalmedina" rel="noopener" target="_blank">Hotel Guadalmedina</a></div><div class="hotel-offer-text">Descompte del 13 % en registrar-se com a membre al web oficial i un 5 % addicional mitjançant el codi <code>WEDDING</code>.</div></div><div class="hotel-offer-item"><div class="hotel-offer-name"><a href="https://maps.google.com/?q=AC+Hotel+M%C3%A1laga+Palacio" rel="noopener" target="_blank">AC Hotel Málaga Palacio</a></div><div class="hotel-offer-text">Habitació estàndard per 219 € per nit, esmorzar i IVA no inclosos. Cup de 20 habitacions per a entrada el 18 i sortida el 20 de juny de 2027. Reserves fins al 18 de maig de 2027 i garantia mitjançant targeta de crèdit.</div></div></div></div>
+</div>
+<div class="hotel-accordion hotel-recommendations faq-item">
+<button aria-expanded="false" class="faq-question" onclick="toggleFaq(this)" type="button">
+<span data-i18n="hotel_list_titol">Altres recomanacions</span>
+<span aria-hidden="true" class="faq-icon"></span>
+</button>
+<div class="faq-answer"><div class="hotel-recommendations-content"><div class="hotel-item"><div><div class="hotel-nom"><a href="https://maps.google.com/?q=Palacio+Solecio+M%C3%A1laga" rel="noopener" target="_blank">Palacio Solecio</a><span class="hotel-estrelles">★★★★</span></div><div class="hotel-zona" data-i18n="hotel_solecio_zona"></div></div><div class="hotel-preu">€€€€</div></div><div class="hotel-item"><div><div class="hotel-nom"><a href="https://maps.google.com/?q=%C3%81urea+Palacio+de+la+Tinta+M%C3%A1laga" rel="noopener" target="_blank">Áurea Palacio de la Tinta</a><span class="hotel-estrelles">★★★★★</span></div><div class="hotel-zona" data-i18n="hotel_tinta_zona"></div></div><div class="hotel-preu">€€€</div></div><div class="hotel-item"><div><div class="hotel-nom"><a href="https://maps.google.com/?q=Gran+Hotel+Miramar+M%C3%A1laga" rel="noopener" target="_blank">Gran Hotel Miramar</a><span class="hotel-estrelles">★★★★★</span></div><div class="hotel-zona" data-i18n="hotel_miramar_zona"></div></div><div class="hotel-preu">€€€€</div></div><div class="hotel-item"><div><div class="hotel-nom"><a href="https://maps.app.goo.gl/drEbE7zbdRTJgsY7A" rel="noopener noreferrer" target="_blank">ME Málaga by Meliá</a><span class="hotel-estrelles">★★★★★</span></div><div class="hotel-zona" data-i18n="hotel_me_zona"></div></div><div class="hotel-preu">€€€€</div></div></div></div>
+</div>
+</section>
+</div>
+<script>
         // --- Navegació entre pàgines per pestanyes ---
         function goToPage(page) {
             ['home', 'ubicaciones', 'alojamiento'].forEach(p => {
@@ -1642,7 +1605,7 @@
                 zona_pedregalejo_titol: "Pedregalejo",
                 zona_pedregalejo_text: "Allunyada del centre, però molt a prop de la platja i del restaurant de la pre-boda. Sol sortir més econòmica.",
                 hotel_offers_titol: "Ofertes d\'hotels",  
-                hotel_offers_content: "<div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\"><a href=\"https://maps.google.com/?q=AC+Hotel+M%C3%A1laga+Palacio\" target=\"_blank\" rel=\"noopener\">AC Hotel Málaga Palacio</a></div><div class=\"hotel-offer-text\">Habitació estàndard per 219 € per nit, esmorzar i IVA no inclosos. Cup de 20 habitacions per a entrada el 18 i sortida el 20 de juny de 2027. Reserves fins al 18 de maig de 2027 i garantia mitjançant targeta de crèdit.</div></div><div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\"><a href=\"https://maps.google.com/?q=Hotel+Guadalmedina\" target=\"_blank\" rel=\"noopener\">Hotel Guadalmedina</a></div><div class=\"hotel-offer-text\">Descompte del 13 % en registrar-se com a membre al web oficial i un 5 % addicional mitjançant el codi <code>WEDDING</code>.</div></div><div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\">Hotels Petit Palace de Màlaga</div><div class=\"hotel-offer-text\">10 % de descompte amb el codi <code>BODABELENXEVI</code>, més un 10 % addicional en registrar-se a Tripster. Codi disponible del 18 al 20 de juny de 2027, amb reserves subjectes a disponibilitat als hotels següents:</div><div class=\"hotel-offer-hotels\"><a href=\"https://maps.google.com/?q=Icon+Malabar\" target=\"_blank\" rel=\"noopener\">Icon Malabar</a><a href=\"https://maps.google.com/?q=Petit+Palace+Plaza+M%C3%A1laga\" target=\"_blank\" rel=\"noopener\">Petit Palace Plaza Málaga</a><a href=\"https://maps.google.com/?q=Petit+Palace+La+Hermosa\" target=\"_blank\" rel=\"noopener\">Petit Palace La Hermosa</a><a href=\"https://maps.google.com/?q=Petit+Palace+La+Equitativa\" target=\"_blank\" rel=\"noopener\">Petit Palace La Equitativa</a><a href=\"https://maps.google.com/?q=Petit+Palace+Las+Vegas\" target=\"_blank\" rel=\"noopener\">Petit Palace Las Vegas</a></div></div><div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\">Soho Boutique Hotels</div><div class=\"hotel-offer-text\">20 % de descompte sobre la tarifa flexible vigent, no acumulable amb altres descomptes. La reserva s'ha de sol·licitar escrivint a <code>info@sohohoteles.com</code>, indicant «A l'atenció de Verónica», la referència del casament, l'hotel, els hostes, l'habitació, les dates i el règim. S'exigeix prepagament, amb cancel·lació gratuïta fins a cinc dies abans de l'arribada. Les habitacions estan subjectes a disponibilitat. L'oferta cobreix els hotels:</div><div class=\"hotel-offer-hotels\"><a href=\"https://maps.google.com/?q=Soho+Bah%C3%ADa+M%C3%A1laga\" target=\"_blank\" rel=\"noopener\">Soho Bahía Málaga</a><a href=\"https://maps.google.com/?q=Soho+Malaga\" target=\"_blank\" rel=\"noopener\">Soho Malaga</a><a href=\"https://maps.google.com/?q=Soho+Urban\" target=\"_blank\" rel=\"noopener\">Soho Urban</a><a href=\"https://maps.google.com/?q=Soho+Los+Naranjos\" target=\"_blank\" rel=\"noopener\">Soho Los Naranjos</a><a href=\"https://maps.google.com/?q=Apartamentos+Soho+Museo\" target=\"_blank\" rel=\"noopener\">Apartamentos Soho Museo</a></div></div>",  
+                hotel_offers_content: "<div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\">Soho Boutique Hotels</div><div class=\"hotel-offer-text\">20 % de descompte sobre la tarifa flexible vigent, no acumulable amb altres descomptes. La reserva s'ha de sol·licitar escrivint a <code>info@sohohoteles.com</code>, indicant «A l'atenció de Verónica», la referència del casament, l'hotel, els hostes, l'habitació, les dates i el règim. S'exigeix prepagament, amb cancel·lació gratuïta fins a cinc dies abans de l'arribada. Les habitacions estan subjectes a disponibilitat. L'oferta cobreix els hotels:</div><div class=\"hotel-offer-hotels\"><a href=\"https://maps.google.com/?q=Soho+Bah%C3%ADa+M%C3%A1laga\" target=\"_blank\" rel=\"noopener\">Soho Bahía Málaga</a><a href=\"https://maps.google.com/?q=Soho+Malaga\" target=\"_blank\" rel=\"noopener\">Soho Malaga</a><a href=\"https://maps.google.com/?q=Soho+Urban\" target=\"_blank\" rel=\"noopener\">Soho Urban</a><a href=\"https://maps.google.com/?q=Soho+Los+Naranjos\" target=\"_blank\" rel=\"noopener\">Soho Los Naranjos</a><a href=\"https://maps.google.com/?q=Apartamentos+Soho+Museo\" target=\"_blank\" rel=\"noopener\">Apartamentos Soho Museo</a></div></div><div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\">Hotels Petit Palace de Màlaga</div><div class=\"hotel-offer-text\">10 % de descompte amb el codi <code>BODABELENXEVI</code>, més un 10 % addicional en registrar-se a Tripster. Codi disponible del 17 al 20 de juny de 2027, amb reserves subjectes a disponibilitat als hotels següents:</div><div class=\"hotel-offer-hotels\"><a href=\"https://maps.google.com/?q=Icon+Malabar\" target=\"_blank\" rel=\"noopener\">Icon Malabar</a><a href=\"https://maps.google.com/?q=Petit+Palace+Plaza+M%C3%A1laga\" target=\"_blank\" rel=\"noopener\">Petit Palace Plaza Málaga</a><a href=\"https://maps.google.com/?q=Petit+Palace+La+Hermosa\" target=\"_blank\" rel=\"noopener\">Petit Palace La Hermosa</a><a href=\"https://maps.google.com/?q=Petit+Palace+La+Equitativa\" target=\"_blank\" rel=\"noopener\">Petit Palace La Equitativa</a><a href=\"https://maps.google.com/?q=Petit+Palace+Las+Vegas\" target=\"_blank\" rel=\"noopener\">Petit Palace Las Vegas</a></div></div><div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\"><a href=\"https://maps.google.com/?q=Hotel+Guadalmedina\" target=\"_blank\" rel=\"noopener\">Hotel Guadalmedina</a></div><div class=\"hotel-offer-text\">Descompte del 13 % en registrar-se com a membre al web oficial i un 5 % addicional mitjançant el codi <code>WEDDING</code>.</div></div><div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\"><a href=\"https://maps.google.com/?q=AC+Hotel+M%C3%A1laga+Palacio\" target=\"_blank\" rel=\"noopener\">AC Hotel Málaga Palacio</a></div><div class=\"hotel-offer-text\">Habitació estàndard per 219 € per nit, esmorzar i IVA no inclosos. Cup de 20 habitacions per a entrada el 18 i sortida el 20 de juny de 2027. Reserves fins al 18 de maig de 2027 i garantia mitjançant targeta de crèdit.</div></div>",  
 
                 hotel_list_titol: "Altres recomanacions",
                 hotel_palacio_zona: "Centre — al costat de la Catedral, piscina a l'àtic",
@@ -1728,7 +1691,7 @@
                 zona_pedregalejo_titol: "Pedregalejo",
                 zona_pedregalejo_text: "Alejada del centro, pero muy cerca de la playa y del restaurante de la pre-boda. Suele salir más económica.",
                 hotel_offers_titol: "Ofertas de hoteles",  
-                hotel_offers_content: "<div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\"><a href=\"https://maps.google.com/?q=AC+Hotel+M%C3%A1laga+Palacio\" target=\"_blank\" rel=\"noopener\">AC Hotel Málaga Palacio</a></div><div class=\"hotel-offer-text\">Habitación estándar por 219 € por noche, desayuno e IVA no incluidos. Cupo de 20 habitaciones para entrada el 18 y salida el 20 de junio de 2027. Reservas hasta el 18 de mayo de 2027 y garantía mediante tarjeta de crédito.</div></div><div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\"><a href=\"https://maps.google.com/?q=Hotel+Guadalmedina\" target=\"_blank\" rel=\"noopener\">Hotel Guadalmedina</a></div><div class=\"hotel-offer-text\">Descuento del 13 % al registrarse como miembro en la web oficial y 5 % adicional mediante el código <code>WEDDING</code>.</div></div><div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\">Hoteles Petit Palace de Málaga</div><div class=\"hotel-offer-text\">10 % de descuento con el código <code>BODABELENXEVI</code>, más un 10 % adicional al registrarse en Tripster. Código disponible del 18 al 20 de junio de 2027, con reservas sujetas a disponibilidad en los siguientes hoteles:</div><div class=\"hotel-offer-hotels\"><a href=\"https://maps.google.com/?q=Icon+Malabar\" target=\"_blank\" rel=\"noopener\">Icon Malabar</a><a href=\"https://maps.google.com/?q=Petit+Palace+Plaza+M%C3%A1laga\" target=\"_blank\" rel=\"noopener\">Petit Palace Plaza Málaga</a><a href=\"https://maps.google.com/?q=Petit+Palace+La+Hermosa\" target=\"_blank\" rel=\"noopener\">Petit Palace La Hermosa</a><a href=\"https://maps.google.com/?q=Petit+Palace+La+Equitativa\" target=\"_blank\" rel=\"noopener\">Petit Palace La Equitativa</a><a href=\"https://maps.google.com/?q=Petit+Palace+Las+Vegas\" target=\"_blank\" rel=\"noopener\">Petit Palace Las Vegas</a></div></div><div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\">Soho Boutique Hotels</div><div class=\"hotel-offer-text\">20 % de descuento sobre la tarifa flexible vigente, no acumulable con otros descuentos. La reserva debe solicitarse escribiendo a <code>info@sohohoteles.com</code>, indicando “A la atención de Verónica”, la referencia de la boda, el hotel, huéspedes, habitación, fechas y régimen. Se exige prepago, con cancelación gratuita hasta cinco días antes de la llegada. Las habitaciones están sujetas a disponibilidad. La oferta cubre los hoteles:</div><div class=\"hotel-offer-hotels\"><a href=\"https://maps.google.com/?q=Soho+Bah%C3%ADa+M%C3%A1laga\" target=\"_blank\" rel=\"noopener\">Soho Bahía Málaga</a><a href=\"https://maps.google.com/?q=Soho+Malaga\" target=\"_blank\" rel=\"noopener\">Soho Malaga</a><a href=\"https://maps.google.com/?q=Soho+Urban\" target=\"_blank\" rel=\"noopener\">Soho Urban</a><a href=\"https://maps.google.com/?q=Soho+Los+Naranjos\" target=\"_blank\" rel=\"noopener\">Soho Los Naranjos</a><a href=\"https://maps.google.com/?q=Apartamentos+Soho+Museo\" target=\"_blank\" rel=\"noopener\">Apartamentos Soho Museo</a></div></div>",  
+                hotel_offers_content: "<div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\">Soho Boutique Hotels</div><div class=\"hotel-offer-text\">20 % de descuento sobre la tarifa flexible vigente, no acumulable con otros descuentos. La reserva debe solicitarse escribiendo a <code>info@sohohoteles.com</code>, indicando “A la atención de Verónica”, la referencia de la boda, el hotel, huéspedes, habitación, fechas y régimen. Se exige prepago, con cancelación gratuita hasta cinco días antes de la llegada. Las habitaciones están sujetas a disponibilidad. La oferta cubre los hoteles:</div><div class=\"hotel-offer-hotels\"><a href=\"https://maps.google.com/?q=Soho+Bah%C3%ADa+M%C3%A1laga\" target=\"_blank\" rel=\"noopener\">Soho Bahía Málaga</a><a href=\"https://maps.google.com/?q=Soho+Malaga\" target=\"_blank\" rel=\"noopener\">Soho Malaga</a><a href=\"https://maps.google.com/?q=Soho+Urban\" target=\"_blank\" rel=\"noopener\">Soho Urban</a><a href=\"https://maps.google.com/?q=Soho+Los+Naranjos\" target=\"_blank\" rel=\"noopener\">Soho Los Naranjos</a><a href=\"https://maps.google.com/?q=Apartamentos+Soho+Museo\" target=\"_blank\" rel=\"noopener\">Apartamentos Soho Museo</a></div></div><div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\">Hoteles Petit Palace de Málaga</div><div class=\"hotel-offer-text\">10 % de descuento con el código <code>BODABELENXEVI</code>, más un 10 % adicional al registrarse en Tripster. Código disponible del 17 al 20 de junio de 2027, con reservas sujetas a disponibilidad en los siguientes hoteles:</div><div class=\"hotel-offer-hotels\"><a href=\"https://maps.google.com/?q=Icon+Malabar\" target=\"_blank\" rel=\"noopener\">Icon Malabar</a><a href=\"https://maps.google.com/?q=Petit+Palace+Plaza+M%C3%A1laga\" target=\"_blank\" rel=\"noopener\">Petit Palace Plaza Málaga</a><a href=\"https://maps.google.com/?q=Petit+Palace+La+Hermosa\" target=\"_blank\" rel=\"noopener\">Petit Palace La Hermosa</a><a href=\"https://maps.google.com/?q=Petit+Palace+La+Equitativa\" target=\"_blank\" rel=\"noopener\">Petit Palace La Equitativa</a><a href=\"https://maps.google.com/?q=Petit+Palace+Las+Vegas\" target=\"_blank\" rel=\"noopener\">Petit Palace Las Vegas</a></div></div><div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\"><a href=\"https://maps.google.com/?q=Hotel+Guadalmedina\" target=\"_blank\" rel=\"noopener\">Hotel Guadalmedina</a></div><div class=\"hotel-offer-text\">Descuento del 13 % al registrarse como miembro en la web oficial y 5 % adicional mediante el código <code>WEDDING</code>.</div></div><div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\"><a href=\"https://maps.google.com/?q=AC+Hotel+M%C3%A1laga+Palacio\" target=\"_blank\" rel=\"noopener\">AC Hotel Málaga Palacio</a></div><div class=\"hotel-offer-text\">Habitación estándar por 219 € por noche, desayuno e IVA no incluidos. Cupo de 20 habitaciones para entrada el 18 y salida el 20 de junio de 2027. Reservas hasta el 18 de mayo de 2027 y garantía mediante tarjeta de crédito.</div></div>",  
 
                 hotel_list_titol: "Otras recomendaciones",
                 hotel_palacio_zona: "Centro — junto a la Catedral, piscina en la azotea",
@@ -1897,10 +1860,8 @@
             window.__syncFixedHeader = onScroll;
         })();
     </script>
-
-    </div>
-
-    <script>
+</div>
+<script>
         // --- Pantalla de contraseña ---
         // Cambia esta contraseña por la que querais compartir con los invitados
         const SITE_PASSWORD = "1234"; // TODO: cambiar por la contraseña definitiva antes de liberar la web a los invitados
@@ -1957,6 +1918,5 @@
             });
         })();
     </script>
-
 </body>
 </html>
