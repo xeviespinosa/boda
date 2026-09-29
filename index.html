@@ -670,6 +670,18 @@
             border-color: var(--ink);
         }
 
+
+        .rsvp-form .bus-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .rsvp-form .bus-options .radio-option label {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.35;
+        }
         .rsvp-form .conditional {
             max-height: 0;
             overflow: hidden;
@@ -1038,6 +1050,8 @@
             .countdown .colon { font-size: 1.4rem; }
             .tabs { gap: 22px; margin-top: 48px; }
             .tabs button { font-size: 0.68rem; letter-spacing: 1.5px; }
+
+            .rsvp-form .bus-options { grid-template-columns: 1fr; }
             .timeline { margin-top: 38px; }
             .timeline::before { left: 58px; }
             .timeline-item { padding-bottom: 30px; }
@@ -1301,7 +1315,7 @@
 </section>
 <section class="rsvp-section" id="rsvp">
 <h2 data-i18n="rsvp_titol">Confirmació d'assistència</h2>
-<p data-i18n="rsvp_text">Si us plau, confirma la teva assistència abans de l'1 de Juny.</p>
+<p data-i18n="rsvp_text">Si us plau, confirma la teva assistència al més aviat possible, moltes gràcies!</p>
 <form class="rsvp-form" data-netlify="true" id="rsvp-form" method="POST" name="rsvp" netlify-honeypot="bot-field">
 <input name="form-name" type="hidden" value="rsvp"/>
 <p style="display:none;">
@@ -1348,7 +1362,7 @@
 <label data-i18n="rsvp_f_alergias" for="f-alergias">Al·lèrgies, intoleràncies o restriccions alimentàries</label>
 <textarea id="f-alergias" name="Alergias"></textarea>
 </div>
-<div class="field">
+<div class="field bus-field"><label data-i18n="rsvp_f_bus">Faràs servir el servei d'autobús?</label><div class="radio-group bus-options"><div class="radio-option"><input id="f-bus-iglesia" name="Servicio de autobús" required="" type="radio" value="De la iglesia a la finca"/><label data-i18n="rsvp_bus_iglesia" for="f-bus-iglesia">De l'església a la finca</label></div><div class="radio-option"><input id="f-bus-fiesta" name="Servicio de autobús" type="radio" value="Después de la fiesta"/><label data-i18n="rsvp_bus_fiesta" for="f-bus-fiesta">Després de la festa</label></div><div class="radio-option"><input id="f-bus-ambos" name="Servicio de autobús" type="radio" value="Ambos trayectos"/><label data-i18n="rsvp_bus_ambos" for="f-bus-ambos">Tots dos trajectes</label></div></div></div><div class="field">
 <label data-i18n="rsvp_f_cancion" for="f-cancion">Una cançó que no pot faltar a la festa</label>
 <input id="f-cancion" name="Canción" type="text"/>
 </div>
@@ -1388,16 +1402,7 @@
 <a class="map-link" data-i18n="ubic_abrir_maps" href="https://maps.google.com/?q=Hacienda+del+Álamo,+Camino+de+Casabermeja,+130,+29014+Málaga" rel="noopener" target="_blank">Obrir a Google Maps</a>
 </div>
 </div>
-<div class="location-card">
-<p class="loc-titol" data-i18n="ubic_preboda_titol">Pre-boda · Restaurante Molabassa</p>
-<p class="loc-adreca">Paseo Marítimo el Pedregal, 22, 29017 Málaga (Pedregalejo)</p>
-<div class="map-frame">
-<iframe loading="lazy" src="https://www.google.com/maps?q=Restaurante+Molabassa,+Paseo+Marítimo+el+Pedregal+22,+Pedregalejo,+Málaga&amp;output=embed"></iframe>
-</div>
-<div class="map-link-wrap">
-<a class="map-link" data-i18n="ubic_abrir_maps" href="https://maps.google.com/?q=Restaurante+Molabassa,+Paseo+Marítimo+el+Pedregal,+22,+29017+Málaga" rel="noopener" target="_blank">Obrir a Google Maps</a>
-</div>
-</div>
+
 </section>
 </div>
 <div id="view-alojamiento" style="display:none;">
@@ -1432,7 +1437,7 @@
 <span data-i18n="apartment_offers_titol">Ofertes d'apartaments</span>
 <span aria-hidden="true" class="faq-icon"></span>
 </button>
-<div class="faq-answer"><div data-i18n="apartment_offers_content"><div class="hotel-offer-item"><div class="hotel-offer-name"><a href="https://living4malaga.com/" rel="noopener noreferrer" target="_blank">Apartaments Living4Malaga</a></div><div class="hotel-offer-text">XX % de descompte amb el codi <code>BODABELENXEVI</code>. Per a reserves de grups, contacteu amb en Xevi.</div></div><div class="hotel-offer-item"><div class="hotel-offer-name"><a href="https://www.booking.com/hotel/es/apartamentos-romero-luna.es.html?chal_t=1790593837016&amp;force_referer=" rel="noopener noreferrer" target="_blank">Apartaments Romero Luna</a></div><div class="hotel-offer-text">10 % de descompte reservant via WhatsApp al <a href="https://wa.me/34610543850" rel="noopener noreferrer" target="_blank">+34 610 543 850</a>, de part d'en Xevi. Disponibilitat a Booking.com.</div></div></div></div>
+<div class="faq-answer"><div data-i18n="apartment_offers_content"><div class="hotel-offer-item"><div class="hotel-offer-name"><a href="https://living4malaga.com/" rel="noopener noreferrer" target="_blank">Apartaments Living4Malaga</a></div><div class="hotel-offer-text">XX % de descompte amb el codi <code>BODABELENXEVI</code>. Per a reserves de grups, contacteu amb en Xevi al <a href="tel:+34608678042">+34 608 678 042</a>.</div></div><div class="hotel-offer-item"><div class="hotel-offer-name"><a href="https://www.booking.com/hotel/es/apartamentos-romero-luna.es.html?chal_t=1790593837016&amp;force_referer=" rel="noopener noreferrer" target="_blank">Apartaments Romero Luna</a></div><div class="hotel-offer-text">10 % de descompte reservant via WhatsApp al <a href="https://wa.me/34610543850" rel="noopener noreferrer" target="_blank">+34 610 543 850</a>, de part d'en Xevi. Disponibilitat a Booking.com.</div></div></div></div>
 </div><div class="hotel-accordion hotel-offers faq-item">
 <button aria-expanded="false" class="faq-question" onclick="toggleFaq(this)" type="button">
 <span data-i18n="hotel_offers_titol">Ofertes d'hotels</span>
@@ -1440,13 +1445,7 @@
 </button>
 <div class="faq-answer"><div data-i18n="hotel_offers_content"><div class="hotel-offer-item"><div class="hotel-offer-name">Soho Boutique Hotels</div><div class="hotel-offer-text">20 % de descompte sobre la tarifa flexible vigent, no acumulable amb altres descomptes. La reserva s'ha de sol·licitar escrivint a <code>info@sohohoteles.com</code>, indicant «A l'atenció de Verónica», la referència del casament, l'hotel, els hostes, l'habitació, les dates i el règim. S'exigeix prepagament, amb cancel·lació gratuïta fins a cinc dies abans de l'arribada. Les habitacions estan subjectes a disponibilitat. L'oferta cobreix els hotels:</div><div class="hotel-offer-hotels"><a href="https://maps.google.com/?q=Soho+Bah%C3%ADa+M%C3%A1laga" rel="noopener" target="_blank">Soho Bahía Málaga</a><a href="https://maps.google.com/?q=Soho+Malaga" rel="noopener" target="_blank">Soho Malaga</a><a href="https://maps.google.com/?q=Soho+Urban" rel="noopener" target="_blank">Soho Urban</a><a href="https://maps.google.com/?q=Soho+Los+Naranjos" rel="noopener" target="_blank">Soho Los Naranjos</a><a href="https://maps.google.com/?q=Apartamentos+Soho+Museo" rel="noopener" target="_blank">Apartamentos Soho Museo</a></div></div><div class="hotel-offer-item"><div class="hotel-offer-name">Hotels Petit Palace de Màlaga</div><div class="hotel-offer-text">10 % de descompte amb el codi <code>BODABELENXEVI</code>, més un 10 % addicional en registrar-se a Tripster. Codi disponible del 17 al 20 de juny de 2027, amb reserves subjectes a disponibilitat als hotels següents:</div><div class="hotel-offer-hotels"><a href="https://maps.google.com/?q=Icon+Malabar" rel="noopener" target="_blank">Icon Malabar</a><a href="https://maps.google.com/?q=Petit+Palace+Plaza+M%C3%A1laga" rel="noopener" target="_blank">Petit Palace Plaza Málaga</a><a href="https://maps.google.com/?q=Petit+Palace+La+Hermosa" rel="noopener" target="_blank">Petit Palace La Hermosa</a><a href="https://maps.google.com/?q=Petit+Palace+La+Equitativa" rel="noopener" target="_blank">Petit Palace La Equitativa</a><a href="https://maps.google.com/?q=Petit+Palace+Las+Vegas" rel="noopener" target="_blank">Petit Palace Las Vegas</a></div></div><div class="hotel-offer-item"><div class="hotel-offer-name"><a href="https://maps.google.com/?q=Hotel+Guadalmedina" rel="noopener" target="_blank">Hotel Guadalmedina</a></div><div class="hotel-offer-text">Descompte del 13 % en registrar-se com a membre al web oficial i un 5 % addicional mitjançant el codi <code>WEDDING</code>.</div></div><div class="hotel-offer-item"><div class="hotel-offer-name"><a href="https://maps.google.com/?q=AC+Hotel+M%C3%A1laga+Palacio" rel="noopener" target="_blank">AC Hotel Málaga Palacio</a></div><div class="hotel-offer-text">Habitació estàndard per 219 € per nit, esmorzar i IVA no inclosos. Cup de 20 habitacions per a entrada el 18 i sortida el 20 de juny de 2027. Reserves fins al 18 de maig de 2027 i garantia mitjançant targeta de crèdit.</div></div></div></div>
 </div>
-<div class="hotel-accordion hotel-recommendations faq-item">
-<button aria-expanded="false" class="faq-question" onclick="toggleFaq(this)" type="button">
-<span data-i18n="hotel_list_titol">Altres recomanacions</span>
-<span aria-hidden="true" class="faq-icon"></span>
-</button>
-<div class="faq-answer"><div class="hotel-recommendations-content"><div class="hotel-item"><div><div class="hotel-nom"><a href="https://maps.google.com/?q=Palacio+Solecio+M%C3%A1laga" rel="noopener" target="_blank">Palacio Solecio</a><span class="hotel-estrelles">★★★★</span></div><div class="hotel-zona" data-i18n="hotel_solecio_zona"></div></div><div class="hotel-preu">€€€€</div></div><div class="hotel-item"><div><div class="hotel-nom"><a href="https://maps.google.com/?q=%C3%81urea+Palacio+de+la+Tinta+M%C3%A1laga" rel="noopener" target="_blank">Áurea Palacio de la Tinta</a><span class="hotel-estrelles">★★★★★</span></div><div class="hotel-zona" data-i18n="hotel_tinta_zona"></div></div><div class="hotel-preu">€€€</div></div><div class="hotel-item"><div><div class="hotel-nom"><a href="https://maps.google.com/?q=Gran+Hotel+Miramar+M%C3%A1laga" rel="noopener" target="_blank">Gran Hotel Miramar</a><span class="hotel-estrelles">★★★★★</span></div><div class="hotel-zona" data-i18n="hotel_miramar_zona"></div></div><div class="hotel-preu">€€€€</div></div><div class="hotel-item"><div><div class="hotel-nom"><a href="https://maps.app.goo.gl/drEbE7zbdRTJgsY7A" rel="noopener noreferrer" target="_blank">ME Málaga by Meliá</a><span class="hotel-estrelles">★★★★★</span></div><div class="hotel-zona" data-i18n="hotel_me_zona"></div></div><div class="hotel-preu">€€€€</div></div></div></div>
-</div>
+
 </section>
 </div>
 <script>
@@ -1585,7 +1584,7 @@
                 faq_q5: "I si volem fer un regal?",
                 faq_a5: "<p>El millor regal és compartir el dia amb vosaltres.</p><p>Si a més voleu fer una aportació, ens seria de gran ajuda per a la nostra lluna de mel:</p><p>IBAN: ES80 1583 0001 1791 4883 1300</p>",
                 rsvp_titol: "Confirmació d'assistència",
-                rsvp_text: "Si us plau, confirma la teva assistència abans de l'1 de Juny.",
+                rsvp_text: "Si us plau, confirma la teva assistència al més aviat possible, moltes gràcies!",
                 rsvp_loading: "Carregant formulari...",
                 rsvp_f_nombre: "Nom complet",
                 rsvp_f_asistencia: "Hi assistiràs?",
@@ -1595,6 +1594,10 @@
                 rsvp_f_acomp_nombres: "Noms dels acompanyants",
                 rsvp_f_acomp_hint: "Indica'ns també l'edat si són menors",
                 rsvp_f_alergias: "Al·lèrgies, intoleràncies o restriccions alimentàries",
+                rsvp_f_bus: "Faràs servir el servei d\'autobús?",
+                rsvp_bus_iglesia: "De l\'església a la finca",
+                rsvp_bus_fiesta: "Després de la festa",
+                rsvp_bus_ambos: "Tots dos trajectes",
                 rsvp_f_cancion: "Una cançó que no pot faltar a la festa",
                 rsvp_enviar: "Enviar",
                 rsvp_note: "Podràs tornar a enviar el formulari si necessites corregir alguna dada.",
@@ -1620,7 +1623,7 @@
                 zona_pedregalejo_titol: "Pedregalejo",
                 zona_pedregalejo_text: "Allunyada del centre, però molt a prop de la platja. Sol sortir més econòmica.",
                 apartment_offers_titol: "Ofertes d\'apartaments",
-                apartment_offers_content: "<div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\"><a href=\"https://living4malaga.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Apartaments Living4Malaga</a></div><div class=\"hotel-offer-text\">XX % de descompte amb el codi <code>BODABELENXEVI</code>. Per a reserves de grups, contacteu amb en Xevi.</div></div><div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\"><a href=\"https://www.booking.com/hotel/es/apartamentos-romero-luna.es.html?chal_t=1790593837016&amp;force_referer=\" target=\"_blank\" rel=\"noopener noreferrer\">Apartaments Romero Luna</a></div><div class=\"hotel-offer-text\">10 % de descompte reservant via WhatsApp al <a href=\"https://wa.me/34610543850\" target=\"_blank\" rel=\"noopener noreferrer\">+34 610 543 850</a>, de part d'en Xevi. Disponibilitat a Booking.com.</div></div>",
+                apartment_offers_content: "<div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\"><a href=\"https://living4malaga.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Apartaments Living4Malaga</a></div><div class=\"hotel-offer-text\">XX % de descompte amb el codi <code>BODABELENXEVI</code>. Per a reserves de grups, contacteu amb en Xevi al <a href=\"tel:+34608678042\">+34 608 678 042</a>.</div></div><div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\"><a href=\"https://www.booking.com/hotel/es/apartamentos-romero-luna.es.html?chal_t=1790593837016&amp;force_referer=\" target=\"_blank\" rel=\"noopener noreferrer\">Apartaments Romero Luna</a></div><div class=\"hotel-offer-text\">10 % de descompte reservant via WhatsApp al <a href=\"https://wa.me/34610543850\" target=\"_blank\" rel=\"noopener noreferrer\">+34 610 543 850</a>, de part d'en Xevi. Disponibilitat a Booking.com.</div></div>",
                 hotel_offers_titol: "Ofertes d\'hotels",  
                 hotel_offers_content: "<div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\">Soho Boutique Hotels</div><div class=\"hotel-offer-text\">20 % de descompte sobre la tarifa flexible vigent, no acumulable amb altres descomptes. La reserva s'ha de sol·licitar escrivint a <code>info@sohohoteles.com</code>, indicant «A l'atenció de Verónica», la referència del casament, l'hotel, els hostes, l'habitació, les dates i el règim. S'exigeix prepagament, amb cancel·lació gratuïta fins a cinc dies abans de l'arribada. Les habitacions estan subjectes a disponibilitat. L'oferta cobreix els hotels:</div><div class=\"hotel-offer-hotels\"><a href=\"https://maps.google.com/?q=Soho+Bah%C3%ADa+M%C3%A1laga\" target=\"_blank\" rel=\"noopener\">Soho Bahía Málaga</a><a href=\"https://maps.google.com/?q=Soho+Malaga\" target=\"_blank\" rel=\"noopener\">Soho Malaga</a><a href=\"https://maps.google.com/?q=Soho+Urban\" target=\"_blank\" rel=\"noopener\">Soho Urban</a><a href=\"https://maps.google.com/?q=Soho+Los+Naranjos\" target=\"_blank\" rel=\"noopener\">Soho Los Naranjos</a><a href=\"https://maps.google.com/?q=Apartamentos+Soho+Museo\" target=\"_blank\" rel=\"noopener\">Apartamentos Soho Museo</a></div></div><div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\">Hotels Petit Palace de Màlaga</div><div class=\"hotel-offer-text\">10 % de descompte amb el codi <code>BODABELENXEVI</code>, més un 10 % addicional en registrar-se a Tripster. Codi disponible del 17 al 20 de juny de 2027, amb reserves subjectes a disponibilitat als hotels següents:</div><div class=\"hotel-offer-hotels\"><a href=\"https://maps.google.com/?q=Icon+Malabar\" target=\"_blank\" rel=\"noopener\">Icon Malabar</a><a href=\"https://maps.google.com/?q=Petit+Palace+Plaza+M%C3%A1laga\" target=\"_blank\" rel=\"noopener\">Petit Palace Plaza Málaga</a><a href=\"https://maps.google.com/?q=Petit+Palace+La+Hermosa\" target=\"_blank\" rel=\"noopener\">Petit Palace La Hermosa</a><a href=\"https://maps.google.com/?q=Petit+Palace+La+Equitativa\" target=\"_blank\" rel=\"noopener\">Petit Palace La Equitativa</a><a href=\"https://maps.google.com/?q=Petit+Palace+Las+Vegas\" target=\"_blank\" rel=\"noopener\">Petit Palace Las Vegas</a></div></div><div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\"><a href=\"https://maps.google.com/?q=Hotel+Guadalmedina\" target=\"_blank\" rel=\"noopener\">Hotel Guadalmedina</a></div><div class=\"hotel-offer-text\">Descompte del 13 % en registrar-se com a membre al web oficial i un 5 % addicional mitjançant el codi <code>WEDDING</code>.</div></div><div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\"><a href=\"https://maps.google.com/?q=AC+Hotel+M%C3%A1laga+Palacio\" target=\"_blank\" rel=\"noopener\">AC Hotel Málaga Palacio</a></div><div class=\"hotel-offer-text\">Habitació estàndard per 219 € per nit, esmorzar i IVA no inclosos. Cup de 20 habitacions per a entrada el 18 i sortida el 20 de juny de 2027. Reserves fins al 18 de maig de 2027 i garantia mitjançant targeta de crèdit.</div></div>",  
 
@@ -1673,7 +1676,7 @@
                 faq_q5: "¿Y si queremos hacer un regalo?",
                 faq_a5: "<p>El mejor regalo es compartir el día con vosotros.</p><p>Si además queréis hacer una aportación, nos sería de gran ayuda para nuestra luna de miel:</p><p>IBAN: ES80 1583 0001 1791 4883 1300</p>",
                 rsvp_titol: "Confirmación de asistencia",
-                rsvp_text: "Por favor, confirma tu asistencia antes del 1 de Junio.",
+                rsvp_text: "Por favor, confirma tu asistencia lo antes posible, ¡muchas gracias!",
                 rsvp_loading: "Cargando formulario...",
                 rsvp_f_nombre: "Nombre completo",
                 rsvp_f_asistencia: "¿Asistirás?",
@@ -1683,6 +1686,10 @@
                 rsvp_f_acomp_nombres: "Nombres de los acompañantes",
                 rsvp_f_acomp_hint: "Indícanos también la edad si son menores",
                 rsvp_f_alergias: "Alergias, intolerancias o restricciones alimentarias",
+                rsvp_f_bus: "¿Usarás el servicio de autobús?",
+                rsvp_bus_iglesia: "De la iglesia a la finca",
+                rsvp_bus_fiesta: "Después de la fiesta",
+                rsvp_bus_ambos: "Ambos trayectos",
                 rsvp_f_cancion: "Una canción que no puede faltar en la fiesta",
                 rsvp_enviar: "Enviar",
                 rsvp_note: "Podrás volver a enviar el formulario si necesitas corregir algún dato.",
@@ -1708,7 +1715,7 @@
                 zona_pedregalejo_titol: "Pedregalejo",
                 zona_pedregalejo_text: "Alejada del centro, pero muy cerca de la playa. Suele salir más económica.",
                 apartment_offers_titol: "Ofertas de apartamentos",
-                apartment_offers_content: "<div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\"><a href=\"https://living4malaga.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Apartamentos Living4Malaga</a></div><div class=\"hotel-offer-text\">XX % de descuento con el código <code>BODABELENXEVI</code>. Para reservas de grupos, contactar con Xevi.</div></div><div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\"><a href=\"https://www.booking.com/hotel/es/apartamentos-romero-luna.es.html?chal_t=1790593837016&amp;force_referer=\" target=\"_blank\" rel=\"noopener noreferrer\">Apartamentos Romero Luna</a></div><div class=\"hotel-offer-text\">10 % de descuento reservando vía WhatsApp al <a href=\"https://wa.me/34610543850\" target=\"_blank\" rel=\"noopener noreferrer\">+34 610 543 850</a>, de parte de Xevi. Disponibilidad en Booking.com.</div></div>",
+                apartment_offers_content: "<div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\"><a href=\"https://living4malaga.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Apartamentos Living4Malaga</a></div><div class=\"hotel-offer-text\">XX % de descuento con el código <code>BODABELENXEVI</code>. Para reservas de grupos, contactar con Xevi en el <a href=\"tel:+34608678042\">+34 608 678 042</a>.</div></div><div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\"><a href=\"https://www.booking.com/hotel/es/apartamentos-romero-luna.es.html?chal_t=1790593837016&amp;force_referer=\" target=\"_blank\" rel=\"noopener noreferrer\">Apartamentos Romero Luna</a></div><div class=\"hotel-offer-text\">10 % de descuento reservando vía WhatsApp al <a href=\"https://wa.me/34610543850\" target=\"_blank\" rel=\"noopener noreferrer\">+34 610 543 850</a>, de parte de Xevi. Disponibilidad en Booking.com.</div></div>",
                 hotel_offers_titol: "Ofertas de hoteles",  
                 hotel_offers_content: "<div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\">Soho Boutique Hotels</div><div class=\"hotel-offer-text\">20 % de descuento sobre la tarifa flexible vigente, no acumulable con otros descuentos. La reserva debe solicitarse escribiendo a <code>info@sohohoteles.com</code>, indicando “A la atención de Verónica”, la referencia de la boda, el hotel, huéspedes, habitación, fechas y régimen. Se exige prepago, con cancelación gratuita hasta cinco días antes de la llegada. Las habitaciones están sujetas a disponibilidad. La oferta cubre los hoteles:</div><div class=\"hotel-offer-hotels\"><a href=\"https://maps.google.com/?q=Soho+Bah%C3%ADa+M%C3%A1laga\" target=\"_blank\" rel=\"noopener\">Soho Bahía Málaga</a><a href=\"https://maps.google.com/?q=Soho+Malaga\" target=\"_blank\" rel=\"noopener\">Soho Malaga</a><a href=\"https://maps.google.com/?q=Soho+Urban\" target=\"_blank\" rel=\"noopener\">Soho Urban</a><a href=\"https://maps.google.com/?q=Soho+Los+Naranjos\" target=\"_blank\" rel=\"noopener\">Soho Los Naranjos</a><a href=\"https://maps.google.com/?q=Apartamentos+Soho+Museo\" target=\"_blank\" rel=\"noopener\">Apartamentos Soho Museo</a></div></div><div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\">Hoteles Petit Palace de Málaga</div><div class=\"hotel-offer-text\">10 % de descuento con el código <code>BODABELENXEVI</code>, más un 10 % adicional al registrarse en Tripster. Código disponible del 17 al 20 de junio de 2027, con reservas sujetas a disponibilidad en los siguientes hoteles:</div><div class=\"hotel-offer-hotels\"><a href=\"https://maps.google.com/?q=Icon+Malabar\" target=\"_blank\" rel=\"noopener\">Icon Malabar</a><a href=\"https://maps.google.com/?q=Petit+Palace+Plaza+M%C3%A1laga\" target=\"_blank\" rel=\"noopener\">Petit Palace Plaza Málaga</a><a href=\"https://maps.google.com/?q=Petit+Palace+La+Hermosa\" target=\"_blank\" rel=\"noopener\">Petit Palace La Hermosa</a><a href=\"https://maps.google.com/?q=Petit+Palace+La+Equitativa\" target=\"_blank\" rel=\"noopener\">Petit Palace La Equitativa</a><a href=\"https://maps.google.com/?q=Petit+Palace+Las+Vegas\" target=\"_blank\" rel=\"noopener\">Petit Palace Las Vegas</a></div></div><div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\"><a href=\"https://maps.google.com/?q=Hotel+Guadalmedina\" target=\"_blank\" rel=\"noopener\">Hotel Guadalmedina</a></div><div class=\"hotel-offer-text\">Descuento del 13 % al registrarse como miembro en la web oficial y 5 % adicional mediante el código <code>WEDDING</code>.</div></div><div class=\"hotel-offer-item\"><div class=\"hotel-offer-name\"><a href=\"https://maps.google.com/?q=AC+Hotel+M%C3%A1laga+Palacio\" target=\"_blank\" rel=\"noopener\">AC Hotel Málaga Palacio</a></div><div class=\"hotel-offer-text\">Habitación estándar por 219 € por noche, desayuno e IVA no incluidos. Cupo de 20 habitaciones para entrada el 18 y salida el 20 de junio de 2027. Reservas hasta el 18 de mayo de 2027 y garantía mediante tarjeta de crédito.</div></div>",  
 
